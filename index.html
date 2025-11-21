@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lee Boon Yew - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui-enhancements.css">
+    <link rel="stylesheet" href="mobile-buttons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">LBY</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="blob"></div>
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h2>Hello, I'm</h2>
+                    <h1 class="gradient-text">Lee Boon Yew</h1>
+                    <p class="hero-description">
+                        A <strong>Computer Science</strong> student passionate about building practical, user-focused
+                        applications.
+                        I enjoy solving problems through code, exploring new technologies, and creating projects that
+                        help me grow as a developer.
+                    </p>
+                    <div class="flex" style="gap: 1rem; margin-top: 2rem;">
+                        <a href="#projects" class="btn btn-outline">View Project</a>
+                        <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-image fade-in">
+                    <div class="img-container">
+                        <img src="images/profile.png" alt="Lee Boon Yew">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>
+                        I am an enthusiastic and motivated Computer Science student committed to applying my academic
+                        knowledge in real-world projects. I enjoy challenges that strengthen my creativity and
+                        problem-solving skills, and I value teamwork, adaptability, and continuous learning.
+                    </p>
+                    <p>
+                        Currently pursuing a Diploma in Computer Science at Tunku Abdul Rahman University of Management
+                        and Technology with a strong CGPA of 3.7991.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section with DevIcons -->
+    <section id="skill">
+        <div class="container">
+            <h2 class="section-title">Professional Skillset</h2>
+            <div class="about-content fade-in">
+                <div class="skills">
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-java-plain colored"></i></div>
+                        <div class="skill-name">Java</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-cplusplus-plain colored"></i></div>
+                        <div class="skill-name">C++</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-python-plain colored"></i></div>
+                        <div class="skill-name">Python</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-kotlin-plain colored"></i></div>
+                        <div class="skill-name">Kotlin</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-mysql-plain colored"></i></div>
+                        <div class="skill-name">MySQL</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-linux-plain"></i></div>
+                        <div class="skill-name">Linux</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-github-original"></i></div>
+                        <div class="skill-name">GitHub</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="devicon-firebase-plain colored"></i></div>
+                        <div class="skill-name">Firebase</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="fas fa-bug"></i></div>
+                        <div class="skill-name">Debugging</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="skill-name">Problem Solving</div>
+                    </div>
+                    <div class="skill-tag">
+                        <div class="skill-icon"><i class="fas fa-users"></i></div>
+                        <div class="skill-name">Teamwork</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section with DevIcons -->
+    <section id="tool">
+        <div class="container">
+            <h2 class="section-title">Tools I use</h2>
+            <div class="about-content fade-in">
+                <div class="skills">
+                    <div class="tool-tag">
+                        <div class="tool-icon"><i class="devicon-vscode-plain colored"></i></div>
+                        <div class="tool-name">VS Code</div>
+                    </div>
+                    <div class="tool-tag">
+                        <div class="tool-icon"><i class="devicon-google-plain colored"></i></div>
+                        <div class="tool-name">Google Antigravity</div>
+                    </div>
+                    <div class="tool-tag">
+                        <div class="tool-icon"><i class="devicon-visualstudio-plain colored"></i></div>
+                        <div class="tool-name">Visual Studio 2022</div>
+                    </div>
+                    <div class="tool-tag">
+                        <div class="tool-icon"><i class="devicon-androidstudio-plain colored"></i></div>
+                        <div class="tool-name">Android Studio</div>
+                    </div>
+                    <div class="tool-tag">
+                        <div class="tool-icon"><i class="devicon-figma-plain colored"></i></div>
+                        <div class="tool-name">Figma</div>
+                    </div>
+                    <div class="tool-tag">
+                        <div class="tool-icon"><i class="fas fa-robot"></i></div>
+                        <div class="tool-name">ChatGPT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <img src="images/project3.png" alt="Travel Package Booking App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Travel Package Booking App</h3>
+                        <p>A mobile app developed using MVVM architecture that allows users to browse and book
+                            packages.
+                            Firebase was used for data storage and real-time updates.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Kotlin</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">MVVM</span>
+                        </div>
+                        <a href="https://github.com/nestchao/Odyssey_Travel_Package_Booking_App" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <img src="images/project2.png" alt="Online Shopping System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Online Shopping System</h3>
+                        <p>Applied core OOP principles to develop features for product management including adding,
+                            editing, deleting, and searching.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">OOP</span>
+                        </div>
+                        <a href="https://github.com/boon-boon/Online-Shopping-System.git" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <img src="images/project1.png" alt="Cloth Ordering System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Cloth Ordering System</h3>
+                        <p>A console-based system with features to add, edit, delete, and search orders. Designed
+                            using
+                            structured programming and data handling techniques.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">C++</span>
+                            <span class="project-tag">Console App</span>
+                        </div>
+                        <a href="https://github.com/boon-boon/CNM-COMPANY.git" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <img src="images/project4.png" alt="Reminder App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Reminder App</h3>
+                        <p>A simple CLI-based productivity tool that allows users to create, edit, and delete
+                            reminders.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">CLI</span>
+                        </div>
+                        <a href="https://github.com/boon-boon/SOFTWARE-DEVELOPMENT-ASSIGNMENT.git" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <img src="images/project5.png" alt="Malaysia Airlines Data Analysis System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Malaysia Airlines Data Analysis System</h3>
+                        <p>Implemented BFS traversal to analyze airline network routes.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Algorithms</span>
+                            <span class="project-tag">BFS</span>
+                        </div>
+                        <a href="https://github.com/nestchao/Pilots.git" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <!-- Job 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mar 2024 – Jun 2024</span>
+                        <h3>Clerk</h3>
+                        <h4>Sunshine Hampers & Florist</h4>
+                        <p>Assisted customers and handled inquiries. Promoted hampers via phone outreach. Managed calls
+                            and directed messages to relevant departments. Supported day-to-day operations.</p>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Dec 2018 – Mar 2020</span>
+                        <h3>Tuition Teacher Assistant</h3>
+                        <h4>Pusat Bahasa Sri Amal Pelangi</h4>
+                        <p>Prepared engaging PowerPoint teaching materials. Assisted in classroom activities. Developed
+                            supporting learning resources.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <!-- Education 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 – Present</span>
+                        <h3>Diploma in Computer Science</h3>
+                        <h4>Tunku Abdul Rahman University of Management and Technology</h4>
+                        <p>Current CGPA: 3.7991. Key subjects: OOP, Interface Design, Linux, Data Structures, Database
+                            Development, Mobile App Development, AI Introduction.</p>
+                    </div>
+                </div>
+
+                <!-- Education 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2019 – 2024</span>
+                        <h3>SPM</h3>
+                        <h4>SMK Taman Pelangi Indah</h4>
+                        <p>Result: 1A 3B+ 2B 1C+ 2C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements & Certifications</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-info">
+                        <h3>Involvement</h3>
+                        <p>Competitor in National Secondary School Programming Contest (NSSPC) 2023</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-info">
+                        <h3>Certifications</h3>
+                        <p>CCNA: Introduction to Networks (Expected Jun 2025)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;" class="fade-in">
+                <p style="margin-bottom: 2rem;">
+                    I'm currently seeking internship opportunities where I can apply my skills, learn from real industry
+                    experience, and contribute to meaningful projects.
+                </p>
+                <p style="margin-bottom: 2rem;">
+                    Feel free to reach out through any of the platforms below.
+                </p>
+
+
+                <div style="margin-top: 4rem;">
+                    <div class="social-links">
+                        <a href="https://github.com/boon-boon" target="_blank" class="social-link"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/boon-yew-47228836b" target="_blank" class="social-link"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/60107659969" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:leeboonyew06@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">&copy; <span id="year"></span> Lee Boon Yew. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
