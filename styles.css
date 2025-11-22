@@ -343,6 +343,7 @@ nav {
 }
 
 /* Skills & Tools Container */
+.tools,
 .skills {
     display: flex;
     flex-wrap: wrap;

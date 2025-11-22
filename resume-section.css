@@ -1,0 +1,145 @@
+/* ==========================================
+   RESUME SECTION
+   ========================================== */
+
+#resume {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.resume-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.resume-box {
+    background: var(--surface);
+    border-radius: 25px;
+    padding: 4rem 3rem;
+    border: 1px solid var(--border);
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.resume-box:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+}
+
+.resume-icon {
+    font-size: 5rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume-icon i {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.resume-box h3 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.resume-box p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.resume-download-btn {
+    font-size: 1.15rem;
+    padding: 1.1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all var(--transition-normal);
+}
+
+.resume-download-btn i {
+    font-size: 1.2rem;
+    transition: transform var(--transition-normal);
+}
+
+.resume-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.resume-download-btn:hover i {
+    transform: translateY(2px);
+}
+
+@media (max-width: 768px) {
+    #resume {
+        min-height: auto;
+    }
+
+    .resume-content {
+        padding: 1rem 0;
+    }
+
+    .resume-box {
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+    }
+
+    .resume-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .resume-box h3 {
+        font-size: 1.65rem;
+    }
+
+    .resume-box p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .resume-download-btn {
+        font-size: 1rem;
+        padding: 0.9rem 2rem;
+    }
+}

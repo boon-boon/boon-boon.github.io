@@ -59,20 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         let current = '';
-        const scrollPosition = window.scrollY + 100; // Offset
+        const scrollPosition = window.scrollY + 150; // Increased offset for better detection
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
 
-            if (scrollPosition >= sectionTop) {
+            // Check if scroll position is within this section
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
             }
         });
 
         links.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
+            const linkHref = link.getAttribute('href');
+            if (linkHref && current && linkHref === `#${current}`) {
                 link.classList.add('active');
             }
         });

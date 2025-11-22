@@ -91,7 +91,8 @@
 }
 
 /* ===== 4. GLASSMORPHISM SKILL TAGS ===== */
-.skill-tag {
+.skill-tag,
+.tool-tag {
     background: var(--glass-bg) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -100,7 +101,8 @@
     overflow: hidden;
 }
 
-.skill-tag::before {
+.skill-tag::before,
+.tool-tag::before {
     content: '';
     position: absolute;
     top: 0;
@@ -113,7 +115,8 @@
     z-index: -1;
 }
 
-.skill-tag:hover {
+.skill-tag:hover,
+.tool-tag:hover {
     color: white !important;
     transform: translateY(-3px) scale(1.05) !important;
     border-color: transparent !important;
@@ -331,7 +334,8 @@ h2.section-title {
         font-size: 1.5rem;
     }
 
-    .skill-tag {
+    .skill-tag,
+    .tool-tag {
         padding: 0.6rem 1.1rem;
         font-size: 0.95rem;
     }
