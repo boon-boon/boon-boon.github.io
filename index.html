@@ -4,477 +4,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lee Boon Yew - Portfolio</title>
+    <title>Lee Boon Yew — portfolio</title>
     <meta name="description"
-        content="Portfolio of Lee Boon Yew, a Computer Science student building mobile and desktop applications with Kotlin, Java, C++ and Python. Open to internship opportunities.">
-    <meta property="og:title" content="Lee Boon Yew - Portfolio">
-    <meta property="og:description"
-        content="Computer Science student building practical, user-focused applications. Open to internships.">
+        content="Portfolio of Lee Boon Yew, a Computer Science student in Malaysia building mobile and desktop applications with Kotlin, Java, C++ and Python. Open to internship opportunities.">
+    <meta property="og:title" content="Lee Boon Yew — portfolio">
+    <meta property="og:description" content="Computer Science student building practical, user-focused apps. Open to internships.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/profile.png">
-    <meta name="theme-color" content="#0b080c">
+    <meta name="theme-color" content="#0a0a0e">
     <link rel="icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b080c'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='700' font-size='26' text-anchor='middle' fill='%23c2a4ff'%3ELBY%3C/text%3E%3C/svg%3E">
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e13'/%3E%3Ctext x='10' y='42' font-family='monospace' font-weight='700' font-size='28' fill='%23ffb454'%3E%3E_%3C/text%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="styles.css">
-
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
-        }
-    }
-    </script>
 </head>
 
 <body>
-    <div class="cursor-main" aria-hidden="true"></div>
+    <a class="skip-link" href="#readme">Skip to content</a>
 
-    <!-- Header -->
-    <header class="header">
-        <a href="#home" class="navbar-title" id="logo" data-cursor="disable" aria-label="LBY - back to top">LBY</a>
-        <a href="mailto:leeboonyew06@gmail.com" class="navbar-connect" data-cursor="disable">leeboonyew06@gmail.com</a>
-        <ul>
-            <li><a href="#about" class="hover-link" data-cursor="disable"><span class="hover-in">ABOUT<span aria-hidden="true">ABOUT</span></span></a></li>
-            <li><a href="#skills" class="hover-link" data-cursor="disable"><span class="hover-in">SKILLS<span aria-hidden="true">SKILLS</span></span></a></li>
-            <li><a href="#work" class="hover-link" data-cursor="disable"><span class="hover-in">WORK<span aria-hidden="true">WORK</span></span></a></li>
-            <li><a href="#contact" class="hover-link" data-cursor="disable"><span class="hover-in">CONTACT<span aria-hidden="true">CONTACT</span></span></a></li>
-        </ul>
+    <!-- ===== Title bar ===== -->
+    <header class="titlebar">
+        <div class="titlebar-left">
+            <span class="dot dot-r" aria-hidden="true"></span>
+            <span class="dot dot-y" aria-hidden="true"></span>
+            <span class="dot dot-g" aria-hidden="true"></span>
+            <button class="menu-btn" id="menu-btn" aria-label="Open file explorer" aria-controls="explorer" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="titlebar-title"><span class="muted">~/</span>lee-boon-yew<span class="muted">/portfolio</span> — <span id="title-file">README.md</span></div>
+        <button class="palette-trigger" id="palette-open" aria-label="Open command palette">
+            <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+            <span>Search</span>
+            <kbd id="palette-kbd">Ctrl K</kbd>
+        </button>
     </header>
 
-    <div class="landing-circle1" aria-hidden="true"></div>
-    <div class="landing-circle2" aria-hidden="true"></div>
-    <div class="nav-fade" aria-hidden="true"></div>
+    <!-- ===== Activity bar ===== -->
+    <nav class="activitybar" aria-label="Tools">
+        <button class="act active" data-act="explorer" aria-label="Toggle explorer" title="Explorer"><i class="far fa-copy" aria-hidden="true"></i></button>
+        <button class="act" data-act="palette" aria-label="Search (command palette)" title="Search"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></button>
+        <button class="act" data-act="git" aria-label="Go to git log" title="Source control"><i class="fas fa-code-branch" aria-hidden="true"></i></button>
+        <button class="act" data-act="skills" aria-label="Go to dependencies" title="Dependencies"><i class="fas fa-cubes" aria-hidden="true"></i></button>
+        <button class="act" data-act="terminal" aria-label="Open terminal" title="Terminal"><i class="fas fa-terminal" aria-hidden="true"></i></button>
+        <span class="act-spacer"></span>
+        <a class="act" href="https://github.com/boon-boon" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a class="act" href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+    </nav>
 
-    <!-- Fixed social icons (left) and resume button (right) -->
-    <div class="icons-section">
-        <div class="social-icons" id="social" data-cursor="icons">
-            <span><a href="https://github.com/boon-boon" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></span>
-            <span><a href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></span>
-            <span><a href="https://wa.me/60107659969" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></span>
-            <span><a href="mailto:leeboonyew06@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a></span>
+    <!-- ===== Explorer ===== -->
+    <aside class="sidebar" id="explorer" aria-label="File explorer">
+        <div class="sidebar-head">Explorer</div>
+        <div class="tree-root"><i class="fas fa-chevron-down" aria-hidden="true"></i> PORTFOLIO</div>
+        <ul class="tree">
+            <li><a href="#readme" class="file" data-target="readme"><i class="fa-brands fa-markdown ic-md" aria-hidden="true"></i>README.md</a></li>
+            <li><a href="#about" class="file" data-target="about"><span class="ic-kt" aria-hidden="true">K</span>about.kt</a></li>
+            <li><a href="#skills" class="file" data-target="skills"><span class="ic-json" aria-hidden="true">{}</span>skills.json</a></li>
+            <li><a href="#journey" class="file" data-target="journey"><i class="fas fa-code-branch ic-git" aria-hidden="true"></i>journey.git</a></li>
+            <li class="folder"><span class="folder-name"><i class="fas fa-chevron-down" aria-hidden="true"></i><i class="fas fa-folder-open ic-folder" aria-hidden="true"></i>projects</span>
+                <ul>
+                    <li><a href="#projects" class="file" data-target="projects" data-repo="0"><i class="fas fa-book-bookmark ic-repo" aria-hidden="true"></i>odyssey-travel</a></li>
+                    <li><a href="#projects" class="file" data-target="projects" data-repo="1"><i class="fas fa-book-bookmark ic-repo" aria-hidden="true"></i>airline-bfs</a></li>
+                    <li><a href="#projects" class="file" data-target="projects" data-repo="2"><i class="fas fa-book-bookmark ic-repo" aria-hidden="true"></i>online-shop</a></li>
+                    <li><a href="#projects" class="file" data-target="projects" data-repo="3"><i class="fas fa-book-bookmark ic-repo" aria-hidden="true"></i>cloth-orders</a></li>
+                    <li><a href="#projects" class="file" data-target="projects" data-repo="4"><i class="fas fa-book-bookmark ic-repo" aria-hidden="true"></i>reminder-cli</a></li>
+                </ul>
+            </li>
+            <li><a href="#tests" class="file" data-target="tests"><i class="fas fa-flask ic-test" aria-hidden="true"></i>achievements.test</a></li>
+            <li><a href="#contact" class="file" data-target="contact"><i class="fas fa-dollar-sign ic-sh" aria-hidden="true"></i>contact.sh</a></li>
+            <li><a href="resume/Lee_Boon_Yew_Resume.pdf" class="file" target="_blank" rel="noopener"><i class="fas fa-file-pdf ic-pdf" aria-hidden="true"></i>resume.pdf</a></li>
+        </ul>
+        <div class="sidebar-foot">
+            <span class="status-dot" aria-hidden="true"></span> Open to internships
         </div>
-        <a class="resume-button" href="resume/Lee_Boon_Yew_Resume.pdf" target="_blank" rel="noopener" data-cursor="disable">
-            <span>RESUME</span>
-            <i class="fas fa-file-lines" aria-hidden="true"></i>
-        </a>
+    </aside>
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+
+    <!-- ===== Tabs + breadcrumbs ===== -->
+    <div class="tabbar" role="tablist" aria-label="Open files">
+        <a href="#readme" class="tab" data-target="readme"><i class="fa-brands fa-markdown ic-md" aria-hidden="true"></i>README.md</a>
+        <a href="#about" class="tab" data-target="about"><span class="ic-kt" aria-hidden="true">K</span>about.kt</a>
+        <a href="#skills" class="tab" data-target="skills"><span class="ic-json" aria-hidden="true">{}</span>skills.json</a>
+        <a href="#journey" class="tab" data-target="journey"><i class="fas fa-code-branch ic-git" aria-hidden="true"></i>journey.git</a>
+        <a href="#projects" class="tab" data-target="projects"><i class="fas fa-folder-open ic-folder" aria-hidden="true"></i>projects/</a>
+        <a href="#tests" class="tab" data-target="tests"><i class="fas fa-flask ic-test" aria-hidden="true"></i>achievements.test</a>
+        <a href="#contact" class="tab" data-target="contact"><i class="fas fa-dollar-sign ic-sh" aria-hidden="true"></i>contact.sh</a>
+    </div>
+    <div class="breadcrumbs" aria-hidden="true">portfolio <span class="muted">›</span> <span id="crumb">README.md</span></div>
+
+    <!-- ===== Minimap ===== -->
+    <div class="minimap" id="minimap" aria-hidden="true">
+        <div class="minimap-track" id="minimap-track"></div>
+        <div class="minimap-view" id="minimap-view"></div>
     </div>
 
-    <!-- 3D character (desktop): fixed canvas, choreographed on scroll by js/character.js -->
-    <div class="character-model" aria-hidden="true">
-        <div class="character-rim"></div>
-        <canvas id="character-canvas"></canvas>
-    </div>
+    <!-- ===== Editor ===== -->
+    <main class="editor" id="editor">
 
-    <main>
-        <!-- Landing -->
-        <section class="landing-section" id="home">
-            <div class="landing-container">
-                <div class="landing-intro">
-                    <h2>Hello! I'm</h2>
-                    <h1>LEE <br><span>BOON YEW</span></h1>
+        <!-- README.md — hero -->
+        <section class="file-section hero" id="readme" data-file="README.md" data-lang="Markdown">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal">&lt;!-- hello, world. you've opened my portfolio. --&gt;</p>
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <p class="md-hash reveal" aria-hidden="true">#</p>
+                        <h1 class="hero-name"><span class="type-target" data-text="Lee Boon Yew">Lee Boon Yew</span><span class="caret" aria-hidden="true"></span></h1>
+                        <p class="hero-role reveal">
+                            <span class="prompt" aria-hidden="true">&gt;</span>
+                            <span class="role-rotate" data-roles='["software engineer in the making","mobile app developer","problem solver"]'>software engineer in the making</span>
+                        </p>
+                        <p class="hero-lead reveal">
+                            Computer Science student in <strong>Malaysia</strong> who turns ideas into practical,
+                            user-focused apps — from Android apps in Kotlin to algorithms in Java.
+                        </p>
+                        <div class="hero-actions reveal">
+                            <a href="#projects" class="btn btn-accent">[ view projects ]</a>
+                            <a href="resume/Lee_Boon_Yew_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">[ resume.pdf ]</a>
+                        </div>
+                    </div>
+                    <figure class="viewer reveal">
+                        <div class="viewer-bar"><i class="far fa-image" aria-hidden="true"></i> lee.png <span class="muted">— preview</span></div>
+                        <img src="images/profile.png" alt="Portrait of Lee Boon Yew" width="450" height="450">
+                        <figcaption class="viewer-foot"><span class="status-dot" aria-hidden="true"></span> online · open to internships</figcaption>
+                    </figure>
                 </div>
-                <div class="landing-info">
-                    <h3>A</h3>
-                    <h2 class="landing-info-h2">
-                        <div class="landing-h2-1">SOFTWARE</div>
-                        <div class="landing-h2-2">MOBILE APP</div>
-                    </h2>
-                    <h2>
-                        <div class="landing-h2-info">ENGINEER</div>
-                        <div class="landing-h2-info-1">DEVELOPER</div>
-                    </h2>
-                </div>
-                <div class="mobile-photo">
-                    <img src="images/profile.png" alt="Lee Boon Yew" width="450" height="450">
-                </div>
+                <pre class="snippet reveal" aria-label="Summary as code"><code><span class="kw">const</span> <span class="var">lee</span> = {
+  <span class="prop">based</span>:    <span class="str">"Malaysia"</span>,
+  <span class="prop">studying</span>: <span class="str">"Diploma in Computer Science @ TAR UMT"</span>,
+  <span class="prop">cgpa</span>:     <span class="num">3.80</span>,
+  <span class="prop">openTo</span>:   [<span class="str">"internships"</span>]
+};</code></pre>
+                <a href="#about" class="scroll-hint reveal"><span class="muted">// scroll to continue</span> <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
             </div>
         </section>
 
-        <!-- About -->
-        <section class="about-section" id="about">
-            <div class="about-me">
-                <h3 class="title">About Me</h3>
-                <p class="para">
-                    I'm a Computer Science student at Tunku Abdul Rahman University of Management and Technology
-                    who loves turning ideas into practical, user-focused apps. I enjoy solving problems through
-                    code, learning new technologies, and working with people who push me to grow.
-                </p>
+        <!-- about.kt -->
+        <section class="file-section" id="about" data-file="about.kt" data-lang="Kotlin">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal">// about.kt — who I am</p>
+                <div class="about-grid">
+                    <div>
+                        <h2 class="section-title reveal">I build things that <em class="accent">people actually use.</em></h2>
+                        <p class="prose reveal">I'm a Diploma in Computer Science student at Tunku Abdul Rahman University of
+                            Management and Technology. I enjoy challenges that stretch my creativity and problem-solving,
+                            and I value teamwork, adaptability and learning something new every week.</p>
+                    </div>
+                    <pre class="snippet reveal" aria-label="About me as a Kotlin data class"><code><span class="kw">data class</span> <span class="type">Developer</span>(
+    <span class="kw">val</span> <span class="prop">name</span>: <span class="type">String</span> = <span class="str">"Lee Boon Yew"</span>,
+    <span class="kw">val</span> <span class="prop">cgpa</span>: <span class="type">Double</span> = <span class="num">3.80</span>,
+    <span class="kw">val</span> <span class="prop">projects</span>: <span class="type">Int</span> = <span class="num">5</span>,
+    <span class="kw">val</span> <span class="prop">languages</span>: <span class="type">List</span>&lt;<span class="type">String</span>&gt; =
+        <span class="fn">listOf</span>(<span class="str">"Kotlin"</span>, <span class="str">"Java"</span>, <span class="str">"C++"</span>, <span class="str">"Python"</span>),
+    <span class="kw">val</span> <span class="prop">softSkills</span>: <span class="type">Set</span>&lt;<span class="type">String</span>&gt; =
+        <span class="fn">setOf</span>(<span class="str">"debugging"</span>, <span class="str">"teamwork"</span>, <span class="str">"adaptability"</span>)
+)</code></pre>
+                </div>
+                <dl class="stats">
+                    <div class="stat reveal"><dt>cgpa</dt><dd>3.80</dd></div>
+                    <div class="stat reveal"><dt>projects</dt><dd>05</dd></div>
+                    <div class="stat reveal"><dt>languages</dt><dd>04</dd></div>
+                    <div class="stat reveal"><dt>status</dt><dd class="accent">open</dd></div>
+                </dl>
             </div>
         </section>
 
-        <!-- What I do -->
-        <section class="whatIDO" id="what">
-            <div class="what-box">
-                <h2 class="title">W<span class="hat-h2">HAT</span><span class="what-line2">&nbsp;I<span class="do-h2"> DO</span></span></h2>
-            </div>
-            <div class="what-box">
-                <div class="what-box-in">
-                    <div class="what-border2" aria-hidden="true">
-                        <svg width="100%">
-                            <line x1="0" y1="0" x2="0" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="7,7" />
-                            <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="7,7" />
-                        </svg>
-                    </div>
-
-                    <div class="what-content what-noTouch">
-                        <div class="what-border1" aria-hidden="true">
-                            <svg height="100%">
-                                <line x1="0" y1="0" x2="100%" y2="0" stroke="white" stroke-width="2" stroke-dasharray="6,6" />
-                                <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6" />
-                            </svg>
-                        </div>
-                        <div class="what-corner" aria-hidden="true"></div>
-                        <div class="what-content-in">
-                            <h3>MOBILE APPS</h3>
-                            <h4>Android apps people actually enjoy using</h4>
-                            <p>Building Android applications with Kotlin and the MVVM architecture, backed by Firebase
-                                for real-time data and authentication.</p>
-                            <h5>Skillset &amp; tools</h5>
-                            <div class="what-content-flex">
-                                <div class="what-tags">Kotlin</div>
-                                <div class="what-tags">Android Studio</div>
-                                <div class="what-tags">Firebase</div>
-                                <div class="what-tags">MVVM</div>
-                                <div class="what-tags">Figma</div>
-                            </div>
-                            <div class="what-arrow" aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <div class="what-content what-noTouch">
-                        <div class="what-border1" aria-hidden="true">
-                            <svg height="100%">
-                                <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6" />
-                            </svg>
-                        </div>
-                        <div class="what-corner" aria-hidden="true"></div>
-                        <div class="what-content-in">
-                            <h3>SOFTWARE</h3>
-                            <h4>Solid programs from algorithms to databases</h4>
-                            <p>Writing object-oriented systems in Java and C++, Python tools, and database-backed
-                                applications, with a focus on clean structure and efficient algorithms.</p>
-                            <h5>Skillset &amp; tools</h5>
-                            <div class="what-content-flex">
-                                <div class="what-tags">Java</div>
-                                <div class="what-tags">C++</div>
-                                <div class="what-tags">Python</div>
-                                <div class="what-tags">MySQL</div>
-                                <div class="what-tags">OOP</div>
-                                <div class="what-tags">Algorithms</div>
-                                <div class="what-tags">Linux</div>
-                                <div class="what-tags">Git</div>
-                            </div>
-                            <div class="what-arrow" aria-hidden="true"></div>
-                        </div>
+        <!-- skills.json — dependency graph -->
+        <section class="file-section" id="skills" data-file="skills.json" data-lang="JSON">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal">// skills.json — my dependencies. drag the nodes.</p>
+                <h2 class="section-title reveal">What I <em class="accent">build with.</em></h2>
+                <div class="graph-wrap reveal">
+                    <canvas id="skills-graph" aria-hidden="true"></canvas>
+                    <div class="graph-legend">
+                        <span><i class="lg lg-lang"></i>languages</span>
+                        <span><i class="lg lg-mobile"></i>mobile</span>
+                        <span><i class="lg lg-data"></i>data &amp; systems</span>
+                        <span><i class="lg lg-tool"></i>tools</span>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="career-section section-container" id="experience">
-            <h2>My career <span>&amp;</span><br> experience</h2>
-            <div class="career-info">
-                <div class="career-timeline" aria-hidden="true">
-                    <div class="career-dot"></div>
-                </div>
-
-                <div class="career-info-box">
-                    <div class="career-info-in">
-                        <div class="career-role">
-                            <h4>Seeking Internship</h4>
-                            <h5>Open to opportunities</h5>
-                        </div>
-                        <h3>NOW</h3>
-                    </div>
-                    <p>Looking for a software or mobile development internship where I can apply what I've built so
-                        far, learn from real industry experience, and contribute to meaningful projects.</p>
-                </div>
-
-                <div class="career-info-box">
-                    <div class="career-info-in">
-                        <div class="career-role">
-                            <h4>Clerk</h4>
-                            <h5>Sunshine Hampers &amp; Florist</h5>
-                        </div>
-                        <h3>2024</h3>
-                    </div>
-                    <p>Mar – Jun 2024. Assisted customers and handled inquiries. Promoted hampers via phone outreach.
-                        Managed calls and directed messages to relevant departments. Supported day-to-day operations.</p>
-                </div>
-
-                <div class="career-info-box">
-                    <div class="career-info-in">
-                        <div class="career-role">
-                            <h4>Tuition Teacher Assistant</h4>
-                            <h5>Pusat Bahasa Sri Amal Pelangi</h5>
-                        </div>
-                        <h3>2018</h3>
-                    </div>
-                    <p>Dec 2018 – Mar 2020. Prepared engaging PowerPoint teaching materials. Assisted in classroom
-                        activities. Developed supporting learning resources.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="career-section section-container" id="education">
-            <h2>My <br> education</h2>
-            <div class="career-info">
-                <div class="career-timeline" aria-hidden="true">
-                    <div class="career-dot"></div>
-                </div>
-
-                <div class="career-info-box">
-                    <div class="career-info-in">
-                        <div class="career-role">
-                            <h4>Diploma in Computer Science</h4>
-                            <h5>Tunku Abdul Rahman University of Management and Technology</h5>
-                        </div>
-                        <h3>NOW</h3>
-                    </div>
-                    <p>2024 – Present. Current CGPA: 3.80. Key subjects: OOP, Interface Design, Linux, Data
-                        Structures, Database Development, Mobile App Development, AI Introduction.</p>
-                </div>
-
-                <div class="career-info-box">
-                    <div class="career-info-in">
-                        <div class="career-role">
-                            <h4>SPM</h4>
-                            <h5>SMK Taman Pelangi Indah</h5>
-                        </div>
-                        <h3>2019</h3>
-                    </div>
-                    <p>2019 – 2024. Result: 1A 3B+ 2B 1C+ 2C.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Work: pinned horizontal scroll (js/scroll-anim.js) -->
-        <section id="work" class="work">
-            <div class="work-container section-container">
-                <h2>My <span>Work</span></h2>
-                <div class="work-flex">
-                    <article class="work-box">
-                        <div class="work-info">
-                            <div class="work-title">
-                                <h3>01</h3>
-                                <div>
-                                    <h4>Travel Package Booking App</h4>
-                                    <p>Mobile · Kotlin</p>
-                                </div>
-                            </div>
-                            <h4>Tools and features</h4>
-                            <p>Kotlin, Firebase, MVVM, real-time updates, package browsing &amp; booking</p>
-                        </div>
-                        <div class="work-image">
-                            <a class="work-image-in" href="https://github.com/nestchao/Odyssey_Travel_Package_Booking_App"
-                                target="_blank" rel="noopener" data-cursor="disable" aria-label="Travel Package Booking App on GitHub">
-                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                                <img src="images/project3.png" alt="Travel Package Booking App" loading="lazy" decoding="async">
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="work-box">
-                        <div class="work-info">
-                            <div class="work-title">
-                                <h3>02</h3>
-                                <div>
-                                    <h4>Malaysia Airlines Data Analysis</h4>
-                                    <p>Algorithms · Java</p>
-                                </div>
-                            </div>
-                            <h4>Tools and features</h4>
-                            <p>Java, graph data structures, breadth-first search, route analysis</p>
-                        </div>
-                        <div class="work-image">
-                            <a class="work-image-in" href="https://github.com/nestchao/Pilots.git" target="_blank"
-                                rel="noopener" data-cursor="disable" aria-label="Malaysia Airlines Data Analysis on GitHub">
-                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                                <img src="images/project5.png" alt="Malaysia Airlines Data Analysis System" loading="lazy" decoding="async">
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="work-box">
-                        <div class="work-info">
-                            <div class="work-title">
-                                <h3>03</h3>
-                                <div>
-                                    <h4>Online Shopping System</h4>
-                                    <p>OOP · Java</p>
-                                </div>
-                            </div>
-                            <h4>Tools and features</h4>
-                            <p>Java, OOP design, product add/edit/delete/search</p>
-                        </div>
-                        <div class="work-image">
-                            <a class="work-image-in" href="https://github.com/boon-boon/Online-Shopping-System.git"
-                                target="_blank" rel="noopener" data-cursor="disable" aria-label="Online Shopping System on GitHub">
-                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                                <img src="images/project2.png" alt="Online Shopping System" loading="lazy" decoding="async">
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="work-box">
-                        <div class="work-info">
-                            <div class="work-title">
-                                <h3>04</h3>
-                                <div>
-                                    <h4>Cloth Ordering System</h4>
-                                    <p>Console App · C++</p>
-                                </div>
-                            </div>
-                            <h4>Tools and features</h4>
-                            <p>C++, structured programming, order add/edit/delete/search</p>
-                        </div>
-                        <div class="work-image">
-                            <a class="work-image-in" href="https://github.com/boon-boon/CNM-COMPANY.git" target="_blank"
-                                rel="noopener" data-cursor="disable" aria-label="Cloth Ordering System on GitHub">
-                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                                <img src="images/project1.png" alt="Cloth Ordering System" loading="lazy" decoding="async">
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="work-box">
-                        <div class="work-info">
-                            <div class="work-title">
-                                <h3>05</h3>
-                                <div>
-                                    <h4>Reminder App</h4>
-                                    <p>CLI · Python</p>
-                                </div>
-                            </div>
-                            <h4>Tools and features</h4>
-                            <p>Python, CLI, create/edit/delete reminders</p>
-                        </div>
-                        <div class="work-image">
-                            <a class="work-image-in" href="https://github.com/boon-boon/SOFTWARE-DEVELOPMENT-ASSIGNMENT.git"
-                                target="_blank" rel="noopener" data-cursor="disable" aria-label="Reminder App on GitHub">
-                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                                <img src="images/project4.png" alt="Reminder App" loading="lazy" decoding="async">
-                            </a>
-                        </div>
-                    </article>
-
-                    <div class="work-box work-box-cta">
-                        <div class="see-all-works">
-                            <h3>Want to see more?</h3>
-                            <p>Explore all of my projects and experiments on GitHub.</p>
-                            <a href="https://github.com/boon-boon" target="_blank" rel="noopener" class="see-all-btn" data-cursor="disable">
-                                See All Works →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills: the 3D globe -->
-        <section class="techstack" id="skills">
-            <h2>Tech Stack</h2>
-            <p class="techstack-lead">Drag the globe to spin it.</p>
-            <div class="globe-wrap" id="skills-globe" aria-label="Tech stack">
-                <ul class="globe-list">
-                    <li class="globe-item"><i class="devicon-java-plain colored" aria-hidden="true"></i><span>Java</span></li>
-                    <li class="globe-item"><i class="devicon-cplusplus-plain colored" aria-hidden="true"></i><span>C++</span></li>
-                    <li class="globe-item"><i class="devicon-python-plain colored" aria-hidden="true"></i><span>Python</span></li>
-                    <li class="globe-item"><i class="devicon-kotlin-plain colored" aria-hidden="true"></i><span>Kotlin</span></li>
-                    <li class="globe-item"><i class="devicon-mysql-plain colored" aria-hidden="true"></i><span>MySQL</span></li>
-                    <li class="globe-item"><i class="devicon-linux-plain" aria-hidden="true"></i><span>Linux</span></li>
-                    <li class="globe-item"><i class="devicon-github-original" aria-hidden="true"></i><span>GitHub</span></li>
-                    <li class="globe-item"><i class="devicon-firebase-plain colored" aria-hidden="true"></i><span>Firebase</span></li>
-                    <li class="globe-item"><i class="devicon-vscode-plain colored" aria-hidden="true"></i><span>VS Code</span></li>
-                    <li class="globe-item"><i class="devicon-visualstudio-plain colored" aria-hidden="true"></i><span>Visual Studio</span></li>
-                    <li class="globe-item"><i class="devicon-androidstudio-plain colored" aria-hidden="true"></i><span>Android Studio</span></li>
-                    <li class="globe-item"><i class="devicon-figma-plain colored" aria-hidden="true"></i><span>Figma</span></li>
-                    <li class="globe-item"><i class="fas fa-robot" aria-hidden="true"></i><span>ChatGPT</span></li>
-                    <li class="globe-item"><i class="devicon-google-plain colored" aria-hidden="true"></i><span>Antigravity</span></li>
+                <!-- Readable list (also used to build the graph) -->
+                <ul class="skill-list" id="skill-list">
+                    <li data-group="lang">Kotlin</li>
+                    <li data-group="lang">Java</li>
+                    <li data-group="lang">C++</li>
+                    <li data-group="lang">Python</li>
+                    <li data-group="mobile">Android Studio</li>
+                    <li data-group="mobile">Firebase</li>
+                    <li data-group="mobile">MVVM</li>
+                    <li data-group="data">MySQL</li>
+                    <li data-group="data">Linux</li>
+                    <li data-group="data">OOP</li>
+                    <li data-group="data">Algorithms</li>
+                    <li data-group="tool">Git &amp; GitHub</li>
+                    <li data-group="tool">VS Code</li>
+                    <li data-group="tool">Visual Studio</li>
+                    <li data-group="tool">Figma</li>
+                    <li data-group="tool">ChatGPT</li>
+                    <li data-group="tool">Antigravity</li>
                 </ul>
             </div>
-            <div class="chips">
-                <span class="chip">Debugging</span>
-                <span class="chip">Problem Solving</span>
-                <span class="chip">Teamwork</span>
-                <span class="chip">Adaptability</span>
+        </section>
+
+        <!-- journey.git — experience + education as a git graph -->
+        <section class="file-section" id="journey" data-file="journey.git" data-lang="Git">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal"><span class="prompt">$</span> git log --graph --all --oneline</p>
+                <h2 class="section-title reveal">My <em class="accent">journey,</em> commit by commit.</h2>
+                <div class="gitlog" id="gitlog">
+                    <svg class="gitlog-svg" id="gitlog-svg" aria-hidden="true"></svg>
+                    <ol class="commits">
+                        <li class="commit" data-lane="0" data-head>
+                            <div class="commit-head">
+                                <span class="hash">a7f3c21</span>
+                                <span class="ref ref-head">HEAD → main</span>
+                                <span class="date">now</span>
+                            </div>
+                            <h3>Seeking a software / mobile internship</h3>
+                            <p>Ready to apply what I've built so far, learn from real industry experience, and contribute to meaningful projects.</p>
+                        </li>
+                        <li class="commit" data-lane="1">
+                            <div class="commit-head">
+                                <span class="hash">5d02e9b</span>
+                                <span class="ref ref-edu">education</span>
+                                <span class="date">2024 — present</span>
+                            </div>
+                            <h3>Diploma in Computer Science <span class="at">@ TAR UMT</span></h3>
+                            <p>CGPA 3.80. OOP, Interface Design, Linux, Data Structures, Database Development, Mobile App Development, AI Introduction.</p>
+                        </li>
+                        <li class="commit" data-lane="2">
+                            <div class="commit-head">
+                                <span class="hash">c41b8e0</span>
+                                <span class="ref ref-work">work</span>
+                                <span class="date">Mar — Jun 2024</span>
+                            </div>
+                            <h3>Clerk <span class="at">@ Sunshine Hampers &amp; Florist</span></h3>
+                            <p>Assisted customers and handled inquiries, promoted hampers via phone outreach, routed calls to the right departments and supported day-to-day operations.</p>
+                        </li>
+                        <li class="commit" data-lane="1">
+                            <div class="commit-head">
+                                <span class="hash">9e17aa4</span>
+                                <span class="ref ref-edu">education</span>
+                                <span class="date">2019 — 2024</span>
+                            </div>
+                            <h3>SPM <span class="at">@ SMK Taman Pelangi Indah</span></h3>
+                            <p>Result: 1A 3B+ 2B 1C+ 2C. Competed in the National Secondary School Programming Contest in 2023.</p>
+                        </li>
+                        <li class="commit" data-lane="2">
+                            <div class="commit-head">
+                                <span class="hash">3b6d0f2</span>
+                                <span class="ref ref-work">work</span>
+                                <span class="date">Dec 2018 — Mar 2020</span>
+                            </div>
+                            <h3>Tuition Teacher Assistant <span class="at">@ Pusat Bahasa Sri Amal Pelangi</span></h3>
+                            <p>Prepared engaging PowerPoint teaching materials, assisted in classroom activities and built supporting learning resources.</p>
+                        </li>
+                        <li class="commit" data-lane="0" data-root>
+                            <div class="commit-head">
+                                <span class="hash">0000001</span>
+                                <span class="date">2018</span>
+                            </div>
+                            <h3 class="muted-title">initial commit: <code>print("hello, world")</code></h3>
+                        </li>
+                    </ol>
+                </div>
             </div>
         </section>
 
-        <!-- Achievements -->
-        <section class="achievements-section section-container" id="achievements">
-            <h2>Achievements <span>&amp;</span><br> certifications</h2>
-            <div class="achievements-grid">
-                <div class="achievement tilt">
-                    <div class="card-inner">
-                        <span class="achievement-num">01</span>
-                        <h3>NSSPC 2023</h3>
-                        <p>Competitor in the National Secondary School Programming Contest.</p>
+        <!-- projects/ — split view: repo list + sticky preview -->
+        <section class="file-section" id="projects" data-file="projects/" data-lang="Repositories">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal"><span class="prompt">$</span> ls ~/projects</p>
+                <h2 class="section-title reveal">Things I've <em class="accent">shipped.</em></h2>
+                <div class="repos">
+                    <ol class="repo-list" id="repo-list">
+                        <li class="repo" data-repo="0" data-img="images/project3.png" data-url="https://github.com/nestchao/Odyssey_Travel_Package_Booking_App">
+                            <button class="repo-btn">
+                                <span class="repo-num">01</span>
+                                <span class="repo-name">odyssey-travel</span>
+                                <span class="repo-lang"><i class="lang-dot" style="--c:#a97bff"></i>Kotlin</span>
+                            </button>
+                            <div class="repo-body">
+                                <h3>Travel Package Booking App</h3>
+                                <p>An Android app for browsing and booking travel packages, built on the MVVM architecture with Firebase for storage and real-time updates.</p>
+                                <p class="repo-tags"><span>Kotlin</span><span>Firebase</span><span>MVVM</span><span>Android</span></p>
+                            </div>
+                        </li>
+                        <li class="repo" data-repo="1" data-img="images/project5.png" data-url="https://github.com/nestchao/Pilots.git">
+                            <button class="repo-btn">
+                                <span class="repo-num">02</span>
+                                <span class="repo-name">airline-bfs</span>
+                                <span class="repo-lang"><i class="lang-dot" style="--c:#e76f00"></i>Java</span>
+                            </button>
+                            <div class="repo-body">
+                                <h3>Malaysia Airlines Data Analysis</h3>
+                                <p>Models an airline's route network as a graph and uses breadth-first search to find connections between airports.</p>
+                                <p class="repo-tags"><span>Java</span><span>Graphs</span><span>BFS</span></p>
+                            </div>
+                        </li>
+                        <li class="repo" data-repo="2" data-img="images/project2.png" data-url="https://github.com/boon-boon/Online-Shopping-System.git">
+                            <button class="repo-btn">
+                                <span class="repo-num">03</span>
+                                <span class="repo-name">online-shop</span>
+                                <span class="repo-lang"><i class="lang-dot" style="--c:#e76f00"></i>Java</span>
+                            </button>
+                            <div class="repo-body">
+                                <h3>Online Shopping System</h3>
+                                <p>Product management built on core OOP principles — adding, editing, deleting and searching products.</p>
+                                <p class="repo-tags"><span>Java</span><span>OOP</span></p>
+                            </div>
+                        </li>
+                        <li class="repo" data-repo="3" data-img="images/project1.png" data-url="https://github.com/boon-boon/CNM-COMPANY.git">
+                            <button class="repo-btn">
+                                <span class="repo-num">04</span>
+                                <span class="repo-name">cloth-orders</span>
+                                <span class="repo-lang"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span>
+                            </button>
+                            <div class="repo-body">
+                                <h3>Cloth Ordering System</h3>
+                                <p>A console ordering system with add, edit, delete and search, designed with structured programming and careful data handling.</p>
+                                <p class="repo-tags"><span>C++</span><span>Console</span></p>
+                            </div>
+                        </li>
+                        <li class="repo" data-repo="4" data-img="images/project4.png" data-url="https://github.com/boon-boon/SOFTWARE-DEVELOPMENT-ASSIGNMENT.git">
+                            <button class="repo-btn">
+                                <span class="repo-num">05</span>
+                                <span class="repo-name">reminder-cli</span>
+                                <span class="repo-lang"><i class="lang-dot" style="--c:#3572a5"></i>Python</span>
+                            </button>
+                            <div class="repo-body">
+                                <h3>Reminder App</h3>
+                                <p>A command-line productivity tool for creating, editing and deleting reminders.</p>
+                                <p class="repo-tags"><span>Python</span><span>CLI</span></p>
+                            </div>
+                        </li>
+                    </ol>
+                    <div class="preview" id="preview">
+                        <div class="preview-bar">
+                            <span class="dot dot-r" aria-hidden="true"></span><span class="dot dot-y" aria-hidden="true"></span><span class="dot dot-g" aria-hidden="true"></span>
+                            <span class="preview-title" id="preview-title">odyssey-travel — preview</span>
+                        </div>
+                        <div class="preview-img"><img id="preview-img" src="images/project3.png" alt="Screenshot of the selected project"></div>
+                        <a class="preview-link" id="preview-link" href="https://github.com/nestchao/Odyssey_Travel_Package_Booking_App" target="_blank" rel="noopener">
+                            <i class="fab fa-github" aria-hidden="true"></i> open repository <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="achievement tilt">
-                    <div class="card-inner">
-                        <span class="achievement-num">02</span>
-                        <h3>CCNA: Introduction to Networks</h3>
-                        <p>Cisco Networking Academy certification.</p>
-                    </div>
+                <a class="more-link reveal" href="https://github.com/boon-boon" target="_blank" rel="noopener"><span class="prompt">$</span> open github.com/boon-boon <span class="muted">— more repositories</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+        <!-- achievements.test -->
+        <section class="file-section" id="tests" data-file="achievements.test" data-lang="Test Results">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal"><span class="prompt">$</span> npm test achievements</p>
+                <div class="testrun" id="testrun">
+                    <p class="t-line"><span class="t-pass">PASS</span> achievements.test</p>
+                    <p class="t-line t-indent"><span class="t-ok">✓</span> competed in NSSPC 2023 <span class="muted">— National Secondary School Programming Contest</span></p>
+                    <p class="t-line t-indent"><span class="t-ok">✓</span> CCNA: Introduction to Networks <span class="muted">— Cisco Networking Academy</span></p>
+                    <p class="t-line t-indent"><span class="t-ok">✓</span> maintains a 3.80 CGPA <span class="muted">— Diploma in Computer Science</span></p>
+                    <p class="t-line t-summary"><span class="muted">Tests:</span> <span class="t-ok t-count">3 passed</span>, 3 total</p>
                 </div>
             </div>
         </section>
 
-        <!-- Call to action -->
-        <section class="cta-section" aria-label="Get in touch">
-            <div class="cta-buttons">
-                <a href="resume/Lee_Boon_Yew_Resume.pdf" target="_blank" rel="noopener" class="cta-btn cta-btn-play" data-cursor="disable">View Resume →</a>
-                <a href="mailto:leeboonyew06@gmail.com" class="cta-btn cta-btn-hire" data-cursor="disable">Hire Me →</a>
-            </div>
-        </section>
+        <!-- contact.sh — interactive terminal -->
+        <section class="file-section" id="contact" data-file="contact.sh" data-lang="Shell">
+            <div class="gutter" aria-hidden="true"></div>
+            <div class="code">
+                <p class="comment reveal"># contact.sh — let's talk</p>
+                <h2 class="section-title reveal">Let's build something <em class="accent">together.</em></h2>
+                <p class="prose reveal">I'm looking for an internship where I can learn from real projects and contribute from day one.
+                    Type <code>help</code> in the terminal — or just use the links.</p>
 
-        <!-- Contact -->
-        <section class="contact-section section-container" id="contact">
-            <div class="contact-container">
-                <h3>Lee Boon Yew</h3>
-                <div class="contact-flex">
-                    <div class="contact-box">
-                        <h4>Email</h4>
-                        <p><a href="mailto:leeboonyew06@gmail.com" data-cursor="disable">leeboonyew06@gmail.com</a></p>
-                        <h4>Location</h4>
-                        <p><span>Malaysia</span></p>
+                <div class="terminal reveal" id="terminal">
+                    <div class="terminal-bar">
+                        <span>TERMINAL</span><span class="muted">bash — contact.sh</span>
                     </div>
-                    <div class="contact-box">
-                        <h4>Social</h4>
-                        <a href="https://github.com/boon-boon" target="_blank" rel="noopener" data-cursor="disable" class="contact-social">Github <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
-                        <a href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener" data-cursor="disable" class="contact-social">Linkedin <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/60107659969" target="_blank" rel="noopener" data-cursor="disable" class="contact-social">WhatsApp <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
-                        <a href="resume/Lee_Boon_Yew_Resume.pdf" download="Lee_Boon_Yew_Resume.pdf" data-cursor="disable" class="contact-social">Resume <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="contact-box">
-                        <h2>Designed and Developed <br> by <span>Lee Boon Yew</span></h2>
-                        <h5><i class="far fa-copyright" aria-hidden="true"></i> <span id="year"></span></h5>
-                    </div>
+                    <div class="terminal-out" id="terminal-out" aria-live="polite"></div>
+                    <form class="terminal-in" id="terminal-form" autocomplete="off">
+                        <label for="terminal-input" class="prompt-label"><span class="accent">lee@portfolio</span>:<span class="type">~</span>$</label>
+                        <input id="terminal-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command">
+                    </form>
                 </div>
+
+                <div class="quick-links reveal">
+                    <a href="mailto:leeboonyew06@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> leeboonyew06@gmail.com</a>
+                    <a href="https://github.com/boon-boon" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> github</a>
+                    <a href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i> linkedin</a>
+                    <a href="https://wa.me/60107659969" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> whatsapp</a>
+                    <a href="resume/Lee_Boon_Yew_Resume.pdf" download="Lee_Boon_Yew_Resume.pdf"><i class="fas fa-download" aria-hidden="true"></i> resume.pdf</a>
+                </div>
+                <p class="eof comment">// EOF · © <span id="year"></span> Lee Boon Yew · built by hand, no frameworks</p>
             </div>
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
-    <script src="js/site.js"></script>
-    <script src="js/scroll-anim.js"></script>
-    <script src="js/skills-globe.js"></script>
-    <script src="js/tilt.js"></script>
-    <script src="js/fun.js"></script>
-    <script type="module" src="js/character.js"></script>
+    <!-- ===== Status bar ===== -->
+    <footer class="statusbar">
+        <span class="sb-item sb-branch"><i class="fas fa-code-branch" aria-hidden="true"></i> main</span>
+        <span class="sb-item"><i class="far fa-circle-check" aria-hidden="true"></i> 0 problems</span>
+        <span class="sb-spacer"></span>
+        <span class="sb-item sb-hide-sm" id="sb-pos">Ln 1, Col 1</span>
+        <span class="sb-item sb-hide-sm">UTF-8</span>
+        <span class="sb-item" id="sb-lang">Markdown</span>
+        <span class="sb-item sb-open"><span class="status-dot" aria-hidden="true"></span> Open to internships</span>
+    </footer>
+
+    <!-- ===== Command palette ===== -->
+    <div class="palette" id="palette" hidden>
+        <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
+            <input class="palette-input" id="palette-input" type="text" placeholder="Type a command or file name…" aria-label="Search commands" autocomplete="off">
+            <ul class="palette-list" id="palette-list" role="listbox"></ul>
+            <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="js/ide.js"></script>
+    <script src="js/gitlog.js"></script>
+    <script src="js/skills-graph.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/terminal.js"></script>
 </body>
 
 </html>
