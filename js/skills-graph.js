@@ -12,8 +12,16 @@
 
     const ctx = canvas.getContext('2d');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const css = getComputedStyle(document.documentElement);
-    const v = (n) => css.getPropertyValue(n).trim();
+    // Colours come from the current theme's CSS tokens (re-read on theme change)
+    const v = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    const groupVar = { lang: '--accent', mobile: '--fn', data: '--type', tool: '--kw' };
+    const theme = {};
+    const readTheme = () => {
+        theme.bg = v('--bg');
+        theme.text = v('--text');
+        theme.edge = v('--graph-edge');
+    };
+    readTheme();
     const groups = {
         lang: { label: 'languages', color: v('--accent') },
         mobile: { label: 'mobile', color: v('--fn') },
@@ -28,7 +36,7 @@
     nodes.push(root);
     const hubs = {};
     Object.entries(groups).forEach(([key, g]) => {
-        const hub = { id: key, label: g.label, kind: 'hub', color: g.color, r: 7 };
+        const hub = { id: key, label: g.label, kind: 'hub', color: g.color, r: 7, group: key };
         hubs[key] = hub;
         nodes.push(hub);
         links.push({ a: root, b: hub, len: 150 });
@@ -110,7 +118,7 @@
 
         links.forEach(l => {
             const on = !near || (near.has(l.a) && near.has(l.b));
-            ctx.strokeStyle = on ? l.b.color : 'rgba(255,255,255,0.08)';
+            ctx.strokeStyle = on ? l.b.color : theme.edge;
             ctx.globalAlpha = on ? (near ? 0.9 : 0.35) : 1;
             ctx.lineWidth = l.a.kind === 'root' ? 1.5 : 1;
             ctx.beginPath();
@@ -142,7 +150,7 @@
                 ctx.fill();
                 ctx.globalAlpha = dim ? 0.25 : 1;
             }
-            ctx.fillStyle = n.kind === 'skill' ? '#0e0e13' : n.color;
+            ctx.fillStyle = n.kind === 'skill' ? theme.bg : n.color;
             ctx.strokeStyle = n.color;
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -151,7 +159,7 @@
             ctx.stroke();
 
             ctx.font = n.kind === 'skill' ? '12px "Geist Mono", monospace' : '600 12px "Geist Mono", monospace';
-            ctx.fillStyle = n.kind === 'skill' ? '#d9d9e3' : n.color;
+            ctx.fillStyle = n.kind === 'skill' ? theme.text : n.color;
             ctx.textBaseline = 'middle';
             const label = n.kind === 'hub' ? `"${n.label}"` : n.label;
             ctx.fillText(label, n.x + n.r + 7, n.y);
@@ -231,4 +239,12 @@
         rt = setTimeout(() => { resize(); draw(0); }, 120);
     });
     document.fonts && document.fonts.ready.then(() => draw(0));
+
+    // Re-colour on theme change
+    document.addEventListener('ide:theme', () => {
+        readTheme();
+        root.color = theme.text;
+        nodes.forEach(n => { if (n.group) n.color = v(groupVar[n.group]); });
+        draw(performance.now());
+    });
 })();

@@ -20,6 +20,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Apply the saved colour theme before first paint (no flash). "system" follows the OS.
+        (function () {
+            var choice = 'system';
+            try { choice = localStorage.getItem('lby-theme') || 'system'; } catch (e) { }
+            var theme = choice === 'system'
+                ? (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'paper' : 'amber')
+                : choice;
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 
 <body>
@@ -51,6 +62,7 @@
         <button class="act" data-act="skills" aria-label="Go to dependencies" title="Dependencies"><i class="fas fa-cubes" aria-hidden="true"></i></button>
         <button class="act" data-act="terminal" aria-label="Open terminal" title="Terminal"><i class="fas fa-terminal" aria-hidden="true"></i></button>
         <span class="act-spacer"></span>
+        <button class="act" data-act="theme" aria-label="Change colour theme" title="Colour theme"><i class="fas fa-palette" aria-hidden="true"></i></button>
         <a class="act" href="https://github.com/boon-boon" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
         <a class="act" href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
     </nav>
@@ -416,6 +428,7 @@
         <span class="sb-item sb-hide-sm" id="sb-pos">Ln 1, Col 1</span>
         <span class="sb-item sb-hide-sm">UTF-8</span>
         <span class="sb-item" id="sb-lang">Markdown</span>
+        <button class="sb-item" id="sb-theme" aria-label="Change colour theme"><i class="fas fa-palette" aria-hidden="true"></i> <span id="sb-theme-name">Amber Night</span></button>
         <span class="sb-item sb-open"><span class="status-dot" aria-hidden="true"></span> Open to internships</span>
     </footer>
 

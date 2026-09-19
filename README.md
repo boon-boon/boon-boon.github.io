@@ -21,6 +21,12 @@ Around it: title bar, activity bar, file explorer (a drawer on phones), tabs and
 the scroll, a minimap, a live status bar (current file language, line number, availability) and a
 **Ctrl/⌘ + K command palette**.
 
+**Colour themes:** Amber Night (default), Paper (light), Nord Frost and Phosphor (retro CRT), plus
+*System* to follow the device. Pick one from the palette icon in the activity bar, the theme name in
+the status bar, `Preferences: Color Theme` in the command palette, or `theme <name>` in the terminal —
+↑/↓ previews live, Esc reverts. The choice is saved in `localStorage` and applied before first paint.
+Each theme is a block of CSS tokens under `html[data-theme="…"]` in `styles.css`.
+
 **Design rules:** one typeface family (Geist + Geist Mono) with extreme size contrast, a near-black
 palette with a single amber accent (syntax colours only inside code), and motion that is tied to
 scrolling rather than autoplaying. `prefers-reduced-motion` turns the motion off.

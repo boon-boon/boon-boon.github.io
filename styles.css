@@ -45,6 +45,141 @@
 
     --lh: 24px;             /* editor line height; gutters count in these units */
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* surfaces & text that change per theme */
+    --text-soft: #b4b4c2;
+    --text-softer: #a9a9b8;
+    --on-accent: #151008;
+    --term-bg: #09090c;
+    --check-a: #1b1b24;
+    --check-b: #15151c;
+    --overlay: rgba(255, 255, 255, 0.06);
+    --overlay-line: rgba(255, 255, 255, 0.08);
+    --scrim: rgba(5, 5, 8, 0.6);
+    --graph-edge: rgba(255, 255, 255, 0.08);
+    color-scheme: dark;
+}
+
+/* ---------- Colour themes (html[data-theme]) ----------
+   amber (default) · paper (light) · nord · phosphor.
+   js/ide.js switches them; an inline script in <head> applies the saved one before paint. */
+html[data-theme="paper"] {
+    --chrome: #ebe7de;
+    --panel: #f3f0e9;
+    --bg: #faf8f3;
+    --raised: #e9e5db;
+    --line: #e1ddd2;
+    --line-strong: #cdc7b9;
+    --text: #1f1c17;
+    --muted: #6f695d;
+    --dim: #bab3a4;
+    --accent: #b45f06;
+    --accent-rgb: 180, 95, 6;
+    --kw: #c2410c;
+    --str: #3d7a1f;
+    --num: #a35200;
+    --type: #1d4ed8;
+    --fn: #0f766e;
+    --prop: #1f1c17;
+    --cmt: #8c8577;
+    --text-soft: #3f3b33;
+    --text-softer: #4d483f;
+    --on-accent: #fff8ee;
+    --term-bg: #f4f1ea;
+    --check-a: #ece8df;
+    --check-b: #f6f3ec;
+    --overlay: rgba(0, 0, 0, 0.05);
+    --overlay-line: rgba(0, 0, 0, 0.08);
+    --scrim: rgba(40, 35, 25, 0.35);
+    --graph-edge: rgba(0, 0, 0, 0.1);
+    color-scheme: light;
+}
+
+html[data-theme="nord"] {
+    --chrome: #242933;
+    --panel: #2b303b;
+    --bg: #2e3440;
+    --raised: #353c4a;
+    --line: #3b4252;
+    --line-strong: #4c566a;
+    --text: #eceff4;
+    --muted: #9aa3b5;
+    --dim: #56607a;
+    --accent: #88c0d0;
+    --accent-rgb: 136, 192, 208;
+    --kw: #81a1c1;
+    --str: #a3be8c;
+    --num: #b48ead;
+    --type: #8fbcbb;
+    --fn: #ebcb8b;
+    --prop: #e5e9f0;
+    --cmt: #6b7489;
+    --text-soft: #d8dee9;
+    --text-softer: #c0c8d6;
+    --on-accent: #1d2330;
+    --term-bg: #262b35;
+    --check-a: #333a47;
+    --check-b: #2b313c;
+    --overlay: rgba(255, 255, 255, 0.06);
+    --overlay-line: rgba(255, 255, 255, 0.1);
+    --scrim: rgba(15, 18, 24, 0.6);
+    --graph-edge: rgba(255, 255, 255, 0.1);
+    color-scheme: dark;
+}
+
+html[data-theme="phosphor"] {
+    --chrome: #020503;
+    --panel: #050a06;
+    --bg: #030703;
+    --raised: #0a120b;
+    --line: #0f2414;
+    --line-strong: #173a20;
+    --text: #b6f5c4;
+    --muted: #4f8f5f;
+    --dim: #1f4a2a;
+    --accent: #39ff88;
+    --accent-rgb: 57, 255, 136;
+    --kw: #7dffb0;
+    --str: #d4ff7a;
+    --num: #39ff88;
+    --type: #6ff2ff;
+    --fn: #a8ffcf;
+    --prop: #b6f5c4;
+    --cmt: #2f6b3e;
+    --text-soft: #93dba5;
+    --text-softer: #7cc48f;
+    --on-accent: #021006;
+    --term-bg: #010401;
+    --check-a: #08140a;
+    --check-b: #050c06;
+    --overlay: rgba(57, 255, 136, 0.06);
+    --overlay-line: rgba(57, 255, 136, 0.12);
+    --scrim: rgba(0, 5, 2, 0.7);
+    --graph-edge: rgba(57, 255, 136, 0.12);
+    color-scheme: dark;
+}
+
+/* Phosphor: faint CRT scanlines over everything */
+html[data-theme="phosphor"] body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+    mix-blend-mode: multiply;
+}
+
+html[data-theme="phosphor"] .hero-name,
+html[data-theme="phosphor"] .section-title {
+    text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35);
+}
+
+/* Smooth hand-over while switching themes (added briefly by js/ide.js) */
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, fill 0.35s ease, stroke 0.35s ease !important;
 }
 
 /* ---------- Base ---------- */
@@ -115,7 +250,7 @@ kbd {
 
 ::selection {
     background: rgba(var(--accent-rgb), 0.3);
-    color: #fff;
+    color: var(--text);
 }
 
 :focus-visible {
@@ -446,7 +581,7 @@ body.explorer-closed .sidebar {
     position: fixed;
     inset: 0;
     z-index: 23;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--scrim);
 }
 
 /* ---------- Tabs + breadcrumbs ---------- */
@@ -575,9 +710,9 @@ body.explorer-closed .breadcrumbs {
     right: 0;
     top: 0;
     height: 40px;
-    background: rgba(255, 255, 255, 0.06);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--overlay);
+    border-top: 1px solid var(--overlay-line);
+    border-bottom: 1px solid var(--overlay-line);
     pointer-events: none;
 }
 
@@ -656,7 +791,7 @@ body.explorer-closed .editor {
 .prose {
     max-width: 56ch;
     font-size: 17px;
-    color: #b4b4c2;
+    color: var(--text-soft);
 }
 
 .prose code {
@@ -717,7 +852,7 @@ body.explorer-closed .editor {
 
 .btn-accent {
     background: var(--accent);
-    color: #151008;
+    color: var(--on-accent);
     font-weight: 600;
 }
 
@@ -798,7 +933,7 @@ body.explorer-closed .editor {
 .hero-lead {
     max-width: 48ch;
     font-size: clamp(16px, 1.4vw, 19px);
-    color: #b4b4c2;
+    color: var(--text-soft);
     margin-bottom: 28px;
 }
 
@@ -846,7 +981,7 @@ body.explorer-closed .editor {
     aspect-ratio: 1;
     object-fit: cover;
     /* checkerboard hint like an image viewer */
-    background: repeating-conic-gradient(#1b1b24 0 25%, #15151c 0 50%) 0 0 / 16px 16px;
+    background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 16px 16px;
 }
 
 .hero .snippet {
@@ -1108,7 +1243,7 @@ body.explorer-closed .editor {
 
 .commit p {
     max-width: 62ch;
-    color: #a9a9b8;
+    color: var(--text-softer);
     font-size: 15px;
 }
 
@@ -1211,7 +1346,7 @@ body.explorer-closed .editor {
 
 .repo-body p {
     font-size: 14.5px;
-    color: #a9a9b8;
+    color: var(--text-softer);
 }
 
 .repo-tags {
@@ -1375,7 +1510,7 @@ body.explorer-closed .editor {
     border: 1px solid var(--line);
     border-radius: 10px;
     overflow: hidden;
-    background: #09090c;
+    background: var(--term-bg);
     font-family: var(--mono);
     font-size: 14px;
 }
@@ -1487,7 +1622,7 @@ body.explorer-closed .editor {
     gap: 2px;
     padding: 0 6px;
     background: var(--accent);
-    color: #1c1406;
+    color: var(--on-accent);
     font-family: var(--mono);
     font-size: 12px;
 }
@@ -1505,8 +1640,19 @@ body.explorer-closed .editor {
     flex: 1;
 }
 
+button.sb-item {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: inherit;
+    cursor: pointer;
+}
+
+button.sb-item:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
 .statusbar .status-dot {
-    background: #0f5b23;
+    background: var(--on-accent);
     animation: none;
 }
 
@@ -1519,7 +1665,7 @@ body.explorer-closed .editor {
     justify-content: center;
     align-items: flex-start;
     padding-top: 12vh;
-    background: rgba(5, 5, 8, 0.6);
+    background: var(--scrim);
     backdrop-filter: blur(2px);
 }
 
@@ -1584,6 +1730,24 @@ body.explorer-closed .editor {
 
 .palette-list li.sel i {
     color: var(--accent);
+}
+
+/* colour swatch shown next to each theme in the picker */
+.palette-list .swatch {
+    display: inline-flex;
+    gap: 3px;
+    margin-left: auto;
+}
+
+.palette-list .swatch b {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    border: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+.palette-list li .hint + .swatch {
+    margin-left: 12px;
 }
 
 .palette-foot {

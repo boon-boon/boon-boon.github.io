@@ -39,6 +39,7 @@
   linkedin     open my LinkedIn
   whatsapp     message me on WhatsApp
   resume       open my resume (PDF)
+  theme        list or switch colour themes
   hire         you know you want to
   clear        clear the terminal`),
         whoami: () => print('Lee Boon Yew — Computer Science student, aspiring software engineer & mobile app developer. Based in Malaysia.'),
@@ -83,6 +84,19 @@
         const [cmd, ...args] = line.split(/\s+/);
         const name = aliases[cmd.toLowerCase()] || cmd.toLowerCase();
         if (name === 'echo') return print(esc(args.join(' ')));
+        if (name === 'theme') {
+            const api = window.ideTheme;
+            if (!api) return print('<span class="t-err">themes unavailable</span>');
+            const want = (args[0] || '').toLowerCase();
+            if (!want) {
+                return print('<span class="t-dim">usage: theme &lt;name&gt;</span>\n' + api.list.map(t =>
+                    `${t.id === api.current() ? '<span class="accent">●</span>' : ' '} ${t.id.padEnd(10)}<span class="t-dim">${esc(t.label)} — ${esc(t.hint)}</span>`
+                ).join('\n'));
+            }
+            const hit = api.list.find(t => t.id === want || t.label.toLowerCase() === want);
+            if (hit && api.apply(hit.id)) return print(`switched to <span class="accent">${esc(hit.label)}</span>`);
+            return print(`<span class="t-err">theme: unknown theme "${esc(want)}"</span> <span class="t-dim">— run <b>theme</b> to list them</span>`);
+        }
         if (name === 'cat') {
             const map = { 'readme.md': 'readme', 'about.kt': 'about', 'skills.json': 'skills', 'journey.git': 'journey', 'achievements.test': 'tests', 'contact.sh': 'contact' };
             const target = map[(args[0] || '').toLowerCase()];
@@ -151,9 +165,11 @@
                 document.head.appendChild(s);
             });
         }
+        // confetti in the current theme's colours
+        const css = getComputedStyle(document.documentElement);
+        const colors = ['--accent', '--kw', '--type', '--fn', '--str'].map(n => css.getPropertyValue(n).trim());
         loading.then(fn => fn({
-            particleCount: 110, spread: 80, startVelocity: 40, origin: { y: 0.75 },
-            colors: ['#ffb454', '#ff8f70', '#82aaff', '#7fdbca', '#b8e986']
+            particleCount: 110, spread: 80, startVelocity: 40, origin: { y: 0.75 }, colors
         })).catch(() => { });
     }
 })();

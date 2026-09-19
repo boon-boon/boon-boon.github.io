@@ -65,6 +65,7 @@
             if (act === 'git') goTo('journey');
             if (act === 'skills') goTo('skills');
             if (act === 'terminal') openTerminal();
+            if (act === 'theme') openPalette('themes');
         });
     });
 
@@ -302,28 +303,96 @@
         { icon: 'fas fa-envelope', label: 'Send an email', hint: 'mailto', run: () => { location.href = 'mailto:leeboonyew06@gmail.com'; } },
         { icon: 'fab fa-github', label: 'Open GitHub profile', hint: 'boon-boon', run: () => window.open('https://github.com/boon-boon', '_blank', 'noopener') },
         { icon: 'fab fa-linkedin-in', label: 'Open LinkedIn profile', hint: 'new tab', run: () => window.open('https://www.linkedin.com/in/boon-yew-lee-47228836b/', '_blank', 'noopener') },
-        { icon: 'far fa-copy', label: 'Toggle explorer', hint: 'sidebar', run: toggleExplorer }
+        { icon: 'far fa-copy', label: 'Toggle explorer', hint: 'sidebar', run: toggleExplorer },
+        { icon: 'fas fa-palette', label: 'Preferences: Color Theme', hint: 'theme', run: () => setTimeout(() => openPalette('themes'), 0) }
     ];
 
+    // ---- Colour themes ----
+    // `choice` is what the user picked (may be "system"); the resolved theme is on <html data-theme>.
+    const THEMES = [
+        { id: 'system', label: 'System', hint: 'follow your device' },
+        { id: 'amber', label: 'Amber Night', hint: 'dark', swatch: ['#0e0e13', '#ffb454', '#82aaff'] },
+        { id: 'paper', label: 'Paper', hint: 'light', swatch: ['#faf8f3', '#b45f06', '#1d4ed8'] },
+        { id: 'nord', label: 'Nord Frost', hint: 'dark', swatch: ['#2e3440', '#88c0d0', '#a3be8c'] },
+        { id: 'phosphor', label: 'Phosphor', hint: 'retro terminal', swatch: ['#030703', '#39ff88', '#6ff2ff'] }
+    ];
+    const lightQuery = window.matchMedia('(prefers-color-scheme: light)');
+    const readChoice = () => { try { return localStorage.getItem('lby-theme') || 'system'; } catch (_) { return 'system'; } };
+    let themeChoice = readChoice();
+    const resolve = (choice) => choice === 'system' ? (lightQuery.matches ? 'paper' : 'amber') : choice;
+    const sbThemeName = document.getElementById('sb-theme-name');
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    let animTimer = 0;
+
+    const applyTheme = (choice, { persist = true, animate = true } = {}) => {
+        if (!THEMES.some(t => t.id === choice)) return false;
+        const theme = resolve(choice);
+        const root = document.documentElement;
+        if (animate && !reducedMotion && root.dataset.theme !== theme) {
+            root.classList.add('theme-anim');
+            clearTimeout(animTimer);
+            animTimer = setTimeout(() => root.classList.remove('theme-anim'), 450);
+        }
+        root.dataset.theme = theme;
+        if (persist) {
+            themeChoice = choice;
+            try { localStorage.setItem('lby-theme', choice); } catch (_) { }
+        }
+        const t = THEMES.find(x => x.id === theme);
+        sbThemeName.textContent = choice === 'system' && persist ? `${t.label} (auto)` : t.label;
+        metaTheme && metaTheme.setAttribute('content', getComputedStyle(root).getPropertyValue('--chrome').trim());
+        document.dispatchEvent(new CustomEvent('ide:theme', { detail: theme }));
+        return true;
+    };
+    window.ideTheme = { list: THEMES, apply: (c) => applyTheme(c), current: () => themeChoice };
+    lightQuery.addEventListener && lightQuery.addEventListener('change', () => {
+        if (themeChoice === 'system') applyTheme('system');
+    });
+    applyTheme(themeChoice, { animate: false });
+
+    // ---- Palette (commands, or the theme picker) ----
+    let mode = 'commands';
+    let items = commands;
     let filtered = commands;
     let sel = 0;
     let lastFocus = null;
+    let themeBefore = null;
+
+    const themeItems = () => THEMES.map(t => ({
+        icon: t.id === themeChoice ? 'fas fa-check' : 'fas fa-palette',
+        label: t.label,
+        hint: t.hint,
+        swatch: t.swatch,
+        theme: t.id,
+        run: () => { applyTheme(t.id); window.ideToast(`Theme: ${t.label}`); }
+    }));
+
+    const previewSelected = () => {
+        if (mode === 'themes' && filtered[sel]) applyTheme(filtered[sel].theme, { persist: false });
+    };
 
     const renderPalette = () => {
         pList.replaceChildren(...filtered.map((c, i) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'option');
+            li.setAttribute('aria-selected', String(i === sel));
             li.className = i === sel ? 'sel' : '';
             li.innerHTML = `<i class="${c.icon}" aria-hidden="true"></i><span></span><span class="hint"></span>`;
             li.children[1].textContent = c.label;
             li.children[2].textContent = c.hint;
-            li.addEventListener('mouseenter', () => { sel = i; renderPalette(); });
+            if (c.swatch) {
+                const sw = document.createElement('span');
+                sw.className = 'swatch';
+                c.swatch.forEach(col => { const b = document.createElement('b'); b.style.background = col; sw.appendChild(b); });
+                li.appendChild(sw);
+            }
+            li.addEventListener('mouseenter', () => { if (sel !== i) { sel = i; renderPalette(); previewSelected(); } });
             li.addEventListener('click', () => runCommand(c));
             return li;
         }));
         if (!filtered.length) {
             const li = document.createElement('li');
-            li.textContent = 'No matching commands';
+            li.textContent = mode === 'themes' ? 'No matching themes' : 'No matching commands';
             li.style.color = 'var(--muted)';
             pList.appendChild(li);
         }
@@ -336,34 +405,45 @@
         return j === q.length;
     };
 
-    function openPalette() {
-        lastFocus = document.activeElement;
+    function openPalette(which = 'commands') {
+        if (palette.hidden) lastFocus = document.activeElement;
+        mode = which;
+        items = mode === 'themes' ? themeItems() : commands;
+        themeBefore = mode === 'themes' ? themeChoice : null;
         palette.hidden = false;
         pInput.value = '';
-        filtered = commands;
-        sel = 0;
+        pInput.placeholder = mode === 'themes' ? 'Select Color Theme (↑/↓ to preview)' : 'Type a command or file name…';
+        filtered = items;
+        sel = mode === 'themes' ? Math.max(0, items.findIndex(t => t.theme === themeChoice)) : 0;
         renderPalette();
         pInput.focus();
     }
-    const closePalette = () => {
+    window.ideOpenThemes = () => openPalette('themes');
+
+    const closePalette = ({ revert = true } = {}) => {
+        // Leaving the theme picker without choosing restores the previous theme
+        if (mode === 'themes' && revert && themeBefore) applyTheme(themeBefore, { persist: false });
         palette.hidden = true;
+        mode = 'commands';
         lastFocus && lastFocus.focus && lastFocus.focus();
     };
     const runCommand = (c) => {
-        closePalette();
+        closePalette({ revert: false });
         c.run();
     };
 
-    document.getElementById('palette-open').addEventListener('click', openPalette);
+    document.getElementById('palette-open').addEventListener('click', () => openPalette());
+    document.getElementById('sb-theme').addEventListener('click', () => openPalette('themes'));
     pInput.addEventListener('input', () => {
         const q = pInput.value.trim();
-        filtered = q ? commands.filter(c => fuzzy(q, c.label + ' ' + c.hint)) : commands;
+        filtered = q ? items.filter(c => fuzzy(q, c.label + ' ' + c.hint)) : items;
         sel = 0;
         renderPalette();
+        previewSelected();
     });
     pInput.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown') { sel = Math.min(filtered.length - 1, sel + 1); renderPalette(); e.preventDefault(); }
-        if (e.key === 'ArrowUp') { sel = Math.max(0, sel - 1); renderPalette(); e.preventDefault(); }
+        if (e.key === 'ArrowDown') { sel = Math.min(filtered.length - 1, sel + 1); renderPalette(); previewSelected(); e.preventDefault(); }
+        if (e.key === 'ArrowUp') { sel = Math.max(0, sel - 1); renderPalette(); previewSelected(); e.preventDefault(); }
         if (e.key === 'Enter' && filtered[sel]) { runCommand(filtered[sel]); e.preventDefault(); }
     });
     palette.addEventListener('click', (e) => { if (e.target === palette) closePalette(); });

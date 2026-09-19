@@ -9,11 +9,13 @@
     const NS = 'http://www.w3.org/2000/svg';
     const commits = [...wrap.querySelectorAll('.commit')];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const css = getComputedStyle(document.documentElement);
-    const colors = [css.getPropertyValue('--accent').trim(), css.getPropertyValue('--type').trim(), css.getPropertyValue('--fn').trim()];
+    let colors = [];
     let paths = [];
 
     const build = () => {
+        // lane colours follow the current theme: main = accent, education = type, work = fn
+        const css = getComputedStyle(document.documentElement);
+        colors = ['--accent', '--type', '--fn'].map(n => css.getPropertyValue(n).trim());
         svg.replaceChildren();
         const small = window.matchMedia('(max-width: 900px)').matches;
         const lanes = small ? [12, 32, 52] : [18, 48, 78];
@@ -85,5 +87,6 @@
     window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(build, 150); });
     window.addEventListener('load', build);
     document.fonts && document.fonts.ready.then(build);
+    document.addEventListener('ide:theme', build);
     build();
 })();
