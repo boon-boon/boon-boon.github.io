@@ -254,7 +254,10 @@
             if (i < full.length) setTimeout(typeName, 55 + Math.random() * 60);
             else setTimeout(rotateRoles, 1800);
         };
-        setTimeout(typeName, 450);
+        // Start typing once the login screen (js/boot.js) has handed over
+        const startTyping = () => setTimeout(typeName, 450);
+        if (window.ideBooted) startTyping();
+        else document.addEventListener('ide:booted', startTyping, { once: true });
     }
 
     function rotateRoles() {
