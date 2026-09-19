@@ -10,6 +10,37 @@
         return;
     }
 
+    // ---- Phone view: the same data as a foldable, syntax-highlighted JSON file ----
+    // (CSS shows it instead of the canvas below 640px; the graph is too cramped there
+    // and dragging nodes would fight with page scrolling.)
+    const jsonEl = document.getElementById('skills-json');
+    if (jsonEl) {
+        const labels = { lang: 'languages', mobile: 'mobile', data: 'data & systems', tool: 'tools' };
+        const colorVar = { lang: '--accent', mobile: '--fn', data: '--type', tool: '--kw' };
+        const byGroup = {};
+        [...list.children].forEach(li => (byGroup[li.dataset.group] ||= []).push(li.textContent));
+        const esc = (s) => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const keys = Object.keys(labels).filter(k => byGroup[k]);
+        let n = 0;
+        jsonEl.innerHTML = '<div class="sj-punc">{</div>' + keys.map((k, gi) => {
+            const items = byGroup[k];
+            const comma = gi < keys.length - 1 ? ',' : '';
+            return `<details class="sj-group" open style="--c: var(${colorVar[k]})">` +
+                `<summary><span class="sj-fold" aria-hidden="true">▾</span><span class="sj-dot" aria-hidden="true"></span>` +
+                `<span class="sj-key">"${esc(labels[k])}"</span><span class="sj-punc">:&nbsp;[</span>` +
+                `<span class="sj-folded">… ${items.length} ]${comma}</span></summary>` +
+                items.map((s, i) => `<div class="sj-item" style="--n:${n++}"><span class="str">"${esc(s)}"</span>` +
+                    `<span class="sj-punc">${i < items.length - 1 ? ',' : ''}</span></div>`).join('') +
+                `<div class="sj-close sj-punc">]${comma}</div></details>`;
+        }).join('') + '<div class="sj-punc">}</div>';
+
+        new IntersectionObserver((entries, obs) => {
+            if (entries[0].isIntersecting) { jsonEl.classList.add('in'); obs.disconnect(); }
+        }, { threshold: 0.15 }).observe(jsonEl);
+        // folding changes the section height, so refresh the gutter line numbers
+        jsonEl.addEventListener('toggle', () => window.ideRefresh && window.ideRefresh(), true);
+    }
+
     const ctx = canvas.getContext('2d');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Colours come from the current theme's CSS tokens (re-read on theme change)
@@ -236,7 +267,16 @@
     let rt = 0;
     window.addEventListener('resize', () => {
         clearTimeout(rt);
-        rt = setTimeout(() => { resize(); draw(0); }, 120);
+        rt = setTimeout(() => {
+            const wasHidden = W === 0;
+            resize();
+            // the canvas was hidden (phone layout) and is now shown: lay the graph out fresh
+            if (wasHidden && W > 0) {
+                seed();
+                if (reducedMotion) for (let i = 0; i < 400; i++) step();
+            }
+            draw(0);
+        }, 120);
     });
     document.fonts && document.fonts.ready.then(() => draw(0));
 

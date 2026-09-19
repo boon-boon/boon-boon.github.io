@@ -223,15 +223,22 @@
 
     // ---- Reveal on scroll (staggered within each section) ----
     sections.forEach(sec => sec.querySelectorAll('.reveal').forEach((el, i) => el.style.setProperty('--i', Math.min(i, 6))));
+    // Comment lines start fully clipped (clip-path), which IntersectionObserver treats as
+    // never visible — so for those we watch their (unclipped) parent block instead.
+    const revealTargets = new Map();
     const revealObs = new IntersectionObserver((entries) => {
         entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('in');
-                revealObs.unobserve(e.target);
-            }
+            if (!e.isIntersecting) return;
+            (revealTargets.get(e.target) || []).forEach(el => el.classList.add('in'));
+            revealObs.unobserve(e.target);
         });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => {
+        const target = el.classList.contains('comment') ? el.parentElement : el;
+        if (!revealTargets.has(target)) revealTargets.set(target, []);
+        revealTargets.get(target).push(el);
+        revealObs.observe(target);
+    });
 
     // ---- Hero: type the name, then rotate the role line ----
     const nameEl = document.querySelector('.type-target');

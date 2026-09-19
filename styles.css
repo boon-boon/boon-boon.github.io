@@ -747,6 +747,8 @@ body.explorer-closed .editor {
     user-select: none;
     border-right: 1px solid var(--line);
     overflow: hidden;
+    /* the numbers must never make the section taller — it's the content that sets the height */
+    contain: size;
 }
 
 .gutter span {
@@ -1123,6 +1125,127 @@ body.explorer-closed .editor {
 
 .lg-tool {
     background: var(--kw);
+}
+
+/* ---- Phone view of skills.json: a foldable JSON file ---- */
+.hint-json {
+    display: none;
+}
+
+.skills-json {
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.9;
+    padding: 16px 16px 16px 12px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--prop);
+}
+
+.sj-punc {
+    color: var(--muted);
+}
+
+.sj-group {
+    padding-left: 1.2ch;
+}
+
+.sj-group summary {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sj-group summary::-webkit-details-marker {
+    display: none;
+}
+
+.sj-group summary:hover,
+.sj-group summary:focus-visible {
+    background: var(--overlay);
+}
+
+.sj-fold {
+    display: inline-block;
+    width: 2ch;
+    color: var(--muted);
+    font-size: 11px;
+    transition: transform 0.2s;
+}
+
+.sj-group:not([open]) .sj-fold {
+    transform: rotate(-90deg);
+}
+
+.sj-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--c);
+    margin-right: 8px;
+    flex: 0 0 auto;
+}
+
+.sj-key {
+    color: var(--c);
+}
+
+/* collapsed: `"languages": [ … 4 ],` on one line, like an editor fold */
+.sj-folded {
+    display: none;
+    color: var(--muted);
+    margin-left: 6px;
+}
+
+.sj-group:not([open]) .sj-folded {
+    display: inline;
+}
+
+.sj-item,
+.sj-close {
+    padding-left: 4ch;
+}
+
+.sj-close {
+    padding-left: 2ch;
+}
+
+.sj-item .str {
+    color: var(--str);
+}
+
+/* items type in one by one when the file scrolls into view */
+.js .skills-json .sj-item {
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.35s, transform 0.35s;
+    transition-delay: calc(var(--n, 0) * 45ms);
+}
+
+.js .skills-json.in .sj-item {
+    opacity: 1;
+    transform: none;
+}
+
+@media (max-width: 640px) {
+
+    .graph-wrap,
+    .hint-graph {
+        display: none;
+    }
+
+    .hint-json {
+        display: inline;
+    }
+
+    .skills-json[hidden] {
+        display: block;
+    }
 }
 
 /* Visible as a list only when the canvas graph isn't running */
@@ -1971,7 +2094,8 @@ button.sb-item:hover {
     }
 
     .js .reveal,
-    .js .comment.reveal {
+    .js .comment.reveal,
+    .js .skills-json .sj-item {
         opacity: 1;
         transform: none;
         clip-path: none;

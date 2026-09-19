@@ -189,7 +189,7 @@
         <section class="file-section" id="skills" data-file="skills.json" data-lang="JSON">
             <div class="gutter" aria-hidden="true"></div>
             <div class="code">
-                <p class="comment reveal">// skills.json — my dependencies. drag the nodes.</p>
+                <p class="comment reveal">// skills.json — my dependencies. <span class="hint-graph">drag the nodes.</span><span class="hint-json">tap a key to fold it.</span></p>
                 <h2 class="section-title reveal">What I <em class="accent">build with.</em></h2>
                 <div class="graph-wrap reveal">
                     <canvas id="skills-graph" aria-hidden="true"></canvas>
@@ -200,7 +200,9 @@
                         <span><i class="lg lg-tool"></i>tools</span>
                     </div>
                 </div>
-                <!-- Readable list (also used to build the graph) -->
+                <!-- Phone view: the same data as a foldable JSON file (built by js/skills-graph.js) -->
+                <div class="skills-json" id="skills-json" hidden></div>
+                <!-- Readable list (also used to build the graph and the JSON view) -->
                 <ul class="skill-list" id="skill-list">
                     <li data-group="lang">Kotlin</li>
                     <li data-group="lang">Java</li>
