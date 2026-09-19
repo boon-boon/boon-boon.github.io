@@ -1,6 +1,0 @@
-/* Mobile-specific button centering */
-@media (max-width: 768px) {
-    .hero-text .flex {
-        justify-content: center;
-    }
-}

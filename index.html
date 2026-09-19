@@ -1,441 +1,480 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lee Boon Yew - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="ui-enhancements.css">
-    <link rel="stylesheet" href="mobile-buttons.css">
+    <meta name="description"
+        content="Portfolio of Lee Boon Yew, a Computer Science student building mobile and desktop applications with Kotlin, Java, C++ and Python. Open to internship opportunities.">
+    <meta property="og:title" content="Lee Boon Yew - Portfolio">
+    <meta property="og:description"
+        content="Computer Science student building practical, user-focused applications. Open to internships.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/profile.png">
+    <meta name="theme-color" content="#0b080c">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b080c'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='700' font-size='26' text-anchor='middle' fill='%23c2a4ff'%3ELBY%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress"></div>
+    <div class="cursor-main" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-container">
-            <div class="logo">LBY</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li><a href="#resume" class="nav-link">Resume</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <a href="#home" class="navbar-title" id="logo" data-cursor="disable" aria-label="LBY - back to top">LBY</a>
+        <a href="mailto:leeboonyew06@gmail.com" class="navbar-connect" data-cursor="disable">leeboonyew06@gmail.com</a>
+        <ul>
+            <li><a href="#about" class="hover-link" data-cursor="disable"><span class="hover-in">ABOUT<span aria-hidden="true">ABOUT</span></span></a></li>
+            <li><a href="#skills" class="hover-link" data-cursor="disable"><span class="hover-in">SKILLS<span aria-hidden="true">SKILLS</span></span></a></li>
+            <li><a href="#work" class="hover-link" data-cursor="disable"><span class="hover-in">WORK<span aria-hidden="true">WORK</span></span></a></li>
+            <li><a href="#contact" class="hover-link" data-cursor="disable"><span class="hover-in">CONTACT<span aria-hidden="true">CONTACT</span></span></a></li>
+        </ul>
+    </header>
+
+    <div class="landing-circle1" aria-hidden="true"></div>
+    <div class="landing-circle2" aria-hidden="true"></div>
+    <div class="nav-fade" aria-hidden="true"></div>
+
+    <!-- Fixed social icons (left) and resume button (right) -->
+    <div class="icons-section">
+        <div class="social-icons" id="social" data-cursor="icons">
+            <span><a href="https://github.com/boon-boon" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></span>
+            <span><a href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></span>
+            <span><a href="https://wa.me/60107659969" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></span>
+            <span><a href="mailto:leeboonyew06@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a></span>
         </div>
-    </nav>
+        <a class="resume-button" href="resume/Lee_Boon_Yew_Resume.pdf" target="_blank" rel="noopener" data-cursor="disable">
+            <span>RESUME</span>
+            <i class="fas fa-file-lines" aria-hidden="true"></i>
+        </a>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="blob"></div>
-            <div class="hero-content">
-                <div class="hero-text fade-in">
-                    <h2>Hello, I'm</h2>
-                    <h1 class="gradient-text">Lee Boon Yew</h1>
-                    <p class="hero-description">
-                        A <strong>Computer Science</strong> student passionate about building practical, user-focused
-                        applications.
-                        I enjoy solving problems through code, exploring new technologies, and creating projects that
-                        help me grow as a developer.
-                    </p>
-                    <div class="flex" style="gap: 1rem; margin-top: 2rem;">
-                        <a href="#projects" class="btn btn-outline">View Project</a>
-                        <a href="#contact" class="btn btn-primary">Contact Me</a>
-                    </div>
-                </div>
-                <div class="hero-image fade-in">
-                    <div class="img-container">
-                        <img src="images/profile.png" alt="Lee Boon Yew">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- 3D character (desktop): fixed canvas, choreographed on scroll by js/character.js -->
+    <div class="character-model" aria-hidden="true">
+        <div class="character-rim"></div>
+        <canvas id="character-canvas"></canvas>
+    </div>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content fade-in">
-                <div class="about-text">
-                    <p>
-                        I am an enthusiastic and motivated Computer Science student committed to applying my academic
-                        knowledge in real-world projects. I enjoy challenges that strengthen my creativity and
-                        problem-solving skills, and I value teamwork, adaptability, and continuous learning.
-                    </p>
-                    <p>
-                        Currently pursuing a Diploma in Computer Science at Tunku Abdul Rahman University of Management
-                        and Technology with a strong CGPA of 3.7991.
-                    </p>
+    <main>
+        <!-- Landing -->
+        <section class="landing-section" id="home">
+            <div class="landing-container">
+                <div class="landing-intro">
+                    <h2>Hello! I'm</h2>
+                    <h1>LEE <br><span>BOON YEW</span></h1>
+                </div>
+                <div class="landing-info">
+                    <h3>A</h3>
+                    <h2 class="landing-info-h2">
+                        <div class="landing-h2-1">SOFTWARE</div>
+                        <div class="landing-h2-2">MOBILE APP</div>
+                    </h2>
+                    <h2>
+                        <div class="landing-h2-info">ENGINEER</div>
+                        <div class="landing-h2-info-1">DEVELOPER</div>
+                    </h2>
+                </div>
+                <div class="mobile-photo">
+                    <img src="images/profile.png" alt="Lee Boon Yew" width="450" height="450">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section with DevIcons -->
-    <section id="skill">
-        <div class="container">
-            <h2 class="section-title">Professional Skillset</h2>
-            <div class="about-content fade-in">
-                <div class="skills">
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-java-plain colored"></i></div>
-                        <div class="skill-name">Java</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-cplusplus-plain colored"></i></div>
-                        <div class="skill-name">C++</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-python-plain colored"></i></div>
-                        <div class="skill-name">Python</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-kotlin-plain colored"></i></div>
-                        <div class="skill-name">Kotlin</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-mysql-plain colored"></i></div>
-                        <div class="skill-name">MySQL</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-linux-plain"></i></div>
-                        <div class="skill-name">Linux</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-github-original"></i></div>
-                        <div class="skill-name">GitHub</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="devicon-firebase-plain colored"></i></div>
-                        <div class="skill-name">Firebase</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="fas fa-bug"></i></div>
-                        <div class="skill-name">Debugging</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
-                        <div class="skill-name">Problem Solving</div>
-                    </div>
-                    <div class="skill-tag">
-                        <div class="skill-icon"><i class="fas fa-users"></i></div>
-                        <div class="skill-name">Teamwork</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools Section with DevIcons -->
-    <section id="tool">
-        <div class="container">
-            <h2 class="section-title">Tools I use</h2>
-            <div class="about-content fade-in">
-                <div class="tools">
-                    <div class="tool-tag">
-                        <div class="tool-icon"><i class="devicon-vscode-plain colored"></i></div>
-                        <div class="tool-name">VS Code</div>
-                    </div>
-                    <div class="tool-tag">
-                        <div class="tool-icon"><i class="devicon-google-plain colored"></i></div>
-                        <div class="tool-name">Google Antigravity</div>
-                    </div>
-                    <div class="tool-tag">
-                        <div class="tool-icon"><i class="devicon-visualstudio-plain colored"></i></div>
-                        <div class="tool-name">Visual Studio 2022</div>
-                    </div>
-                    <div class="tool-tag">
-                        <div class="tool-icon"><i class="devicon-androidstudio-plain colored"></i></div>
-                        <div class="tool-name">Android Studio</div>
-                    </div>
-                    <div class="tool-tag">
-                        <div class="tool-icon"><i class="devicon-figma-plain colored"></i></div>
-                        <div class="tool-name">Figma</div>
-                    </div>
-                    <div class="tool-tag">
-                        <div class="tool-icon"><i class="fas fa-robot"></i></div>
-                        <div class="tool-name">ChatGPT</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card fade-in">
-                    <div class="project-img">
-                        <img src="images/project3.png" alt="Travel Package Booking App">
-                    </div>
-                    <div class="project-info">
-                        <h3>Travel Package Booking App</h3>
-                        <p>A mobile app developed using MVVM architecture that allows users to browse and book
-                            packages.
-                            Firebase was used for data storage and real-time updates.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Kotlin</span>
-                            <span class="project-tag">Firebase</span>
-                            <span class="project-tag">MVVM</span>
-                        </div>
-                        <a href="https://github.com/nestchao/Odyssey_Travel_Package_Booking_App" target="_blank"
-                            class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card fade-in">
-                    <div class="project-img">
-                        <img src="images/project2.png" alt="Online Shopping System">
-                    </div>
-                    <div class="project-info">
-                        <h3>Online Shopping System</h3>
-                        <p>Applied core OOP principles to develop features for product management including adding,
-                            editing, deleting, and searching.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">OOP</span>
-                        </div>
-                        <a href="https://github.com/boon-boon/Online-Shopping-System.git" target="_blank"
-                            class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card fade-in">
-                    <div class="project-img">
-                        <img src="images/project1.png" alt="Cloth Ordering System">
-                    </div>
-                    <div class="project-info">
-                        <h3>Cloth Ordering System</h3>
-                        <p>A console-based system with features to add, edit, delete, and search orders. Designed
-                            using
-                            structured programming and data handling techniques.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">Console App</span>
-                        </div>
-                        <a href="https://github.com/boon-boon/CNM-COMPANY.git" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card fade-in">
-                    <div class="project-img">
-                        <img src="images/project4.png" alt="Reminder App">
-                    </div>
-                    <div class="project-info">
-                        <h3>Reminder App</h3>
-                        <p>A simple CLI-based productivity tool that allows users to create, edit, and delete
-                            reminders.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">CLI</span>
-                        </div>
-                        <a href="https://github.com/boon-boon/SOFTWARE-DEVELOPMENT-ASSIGNMENT.git" target="_blank"
-                            class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card fade-in">
-                    <div class="project-img">
-                        <img src="images/project5.png" alt="Malaysia Airlines Data Analysis System">
-                    </div>
-                    <div class="project-info">
-                        <h3>Malaysia Airlines Data Analysis System</h3>
-                        <p>Implemented BFS traversal to analyze airline network routes.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">Algorithms</span>
-                            <span class="project-tag">BFS</span>
-                        </div>
-                        <a href="https://github.com/nestchao/Pilots.git" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="timeline">
-                <!-- Job 1 -->
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar 2024 – Jun 2024</span>
-                        <h3>Clerk</h3>
-                        <h4>Sunshine Hampers & Florist</h4>
-                        <p>Assisted customers and handled inquiries. Promoted hampers via phone outreach. Managed calls
-                            and directed messages to relevant departments. Supported day-to-day operations.</p>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Dec 2018 – Mar 2020</span>
-                        <h3>Tuition Teacher Assistant</h3>
-                        <h4>Pusat Bahasa Sri Amal Pelangi</h4>
-                        <p>Prepared engaging PowerPoint teaching materials. Assisted in classroom activities. Developed
-                            supporting learning resources.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline">
-                <!-- Education 1 -->
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024 – Present</span>
-                        <h3>Diploma in Computer Science</h3>
-                        <h4>Tunku Abdul Rahman University of Management and Technology</h4>
-                        <p>Current CGPA: 3.7991. Key subjects: OOP, Interface Design, Linux, Data Structures, Database
-                            Development, Mobile App Development, AI Introduction.</p>
-                    </div>
-                </div>
-
-                <!-- Education 2 -->
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2019 – 2024</span>
-                        <h3>SPM</h3>
-                        <h4>SMK Taman Pelangi Indah</h4>
-                        <p>Result: 1A 3B+ 2B 1C+ 2C</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements">
-        <div class="container">
-            <h2 class="section-title">Achievements & Certifications</h2>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-info">
-                        <h3>Involvement</h3>
-                        <p>Competitor in National Secondary School Programming Contest (NSSPC) 2023</p>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-info">
-                        <h3>Certifications</h3>
-                        <p>CCNA: Introduction to Networks (Expected Jun 2025)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Resume Section -->
-    <section id="resume">
-        <div class="container">
-            <h2 class="section-title">Resume</h2>
-            <div class="about-content fade-in">
-                <div class="about-text">
-                    <p style="text-align: center; margin-bottom: 2rem;">
-                        View my complete professional profile, skills, and experience in a comprehensive resume format.
-                    </p>
-                    <div style="text-align: center;">
-                        <a href="resume/Lee_Boon_Yew_Resume.pdf" download="Lee_Boon_Yew_Resume.pdf"
-                            class="btn btn-primary">
-                            <i class="fas fa-download"></i> Download Resume
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;" class="fade-in">
-                <p style="margin-bottom: 2rem;">
-                    I'm currently seeking internship opportunities where I can apply my skills, learn from real industry
-                    experience, and contribute to meaningful projects.
+        <!-- About -->
+        <section class="about-section" id="about">
+            <div class="about-me">
+                <h3 class="title">About Me</h3>
+                <p class="para">
+                    I'm a Computer Science student at Tunku Abdul Rahman University of Management and Technology
+                    who loves turning ideas into practical, user-focused apps. I enjoy solving problems through
+                    code, learning new technologies, and working with people who push me to grow.
                 </p>
-                <p style="margin-bottom: 2rem;">
-                    Feel free to reach out through any of the platforms below.
-                </p>
+            </div>
+        </section>
 
+        <!-- What I do -->
+        <section class="whatIDO" id="what">
+            <div class="what-box">
+                <h2 class="title">W<span class="hat-h2">HAT</span><span class="what-line2">&nbsp;I<span class="do-h2"> DO</span></span></h2>
+            </div>
+            <div class="what-box">
+                <div class="what-box-in">
+                    <div class="what-border2" aria-hidden="true">
+                        <svg width="100%">
+                            <line x1="0" y1="0" x2="0" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="7,7" />
+                            <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="7,7" />
+                        </svg>
+                    </div>
 
-                <div style="margin-top: 4rem;">
-                    <div class="social-links">
-                        <a href="https://github.com/boon-boon" target="_blank" class="social-link"><i
-                                class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank"
-                            class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://wa.me/60107659969" class="social-link">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="mailto:leeboonyew06@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+                    <div class="what-content what-noTouch">
+                        <div class="what-border1" aria-hidden="true">
+                            <svg height="100%">
+                                <line x1="0" y1="0" x2="100%" y2="0" stroke="white" stroke-width="2" stroke-dasharray="6,6" />
+                                <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6" />
+                            </svg>
+                        </div>
+                        <div class="what-corner" aria-hidden="true"></div>
+                        <div class="what-content-in">
+                            <h3>MOBILE APPS</h3>
+                            <h4>Android apps people actually enjoy using</h4>
+                            <p>Building Android applications with Kotlin and the MVVM architecture, backed by Firebase
+                                for real-time data and authentication.</p>
+                            <h5>Skillset &amp; tools</h5>
+                            <div class="what-content-flex">
+                                <div class="what-tags">Kotlin</div>
+                                <div class="what-tags">Android Studio</div>
+                                <div class="what-tags">Firebase</div>
+                                <div class="what-tags">MVVM</div>
+                                <div class="what-tags">Figma</div>
+                            </div>
+                            <div class="what-arrow" aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <div class="what-content what-noTouch">
+                        <div class="what-border1" aria-hidden="true">
+                            <svg height="100%">
+                                <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="6,6" />
+                            </svg>
+                        </div>
+                        <div class="what-corner" aria-hidden="true"></div>
+                        <div class="what-content-in">
+                            <h3>SOFTWARE</h3>
+                            <h4>Solid programs from algorithms to databases</h4>
+                            <p>Writing object-oriented systems in Java and C++, Python tools, and database-backed
+                                applications, with a focus on clean structure and efficient algorithms.</p>
+                            <h5>Skillset &amp; tools</h5>
+                            <div class="what-content-flex">
+                                <div class="what-tags">Java</div>
+                                <div class="what-tags">C++</div>
+                                <div class="what-tags">Python</div>
+                                <div class="what-tags">MySQL</div>
+                                <div class="what-tags">OOP</div>
+                                <div class="what-tags">Algorithms</div>
+                                <div class="what-tags">Linux</div>
+                                <div class="what-tags">Git</div>
+                            </div>
+                            <div class="what-arrow" aria-hidden="true"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p class="footer-text">&copy; <span id="year"></span> Lee Boon Yew. All rights reserved.</p>
-        </div>
-    </footer>
+        <!-- Experience -->
+        <section class="career-section section-container" id="experience">
+            <h2>My career <span>&amp;</span><br> experience</h2>
+            <div class="career-info">
+                <div class="career-timeline" aria-hidden="true">
+                    <div class="career-dot"></div>
+                </div>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+                <div class="career-info-box">
+                    <div class="career-info-in">
+                        <div class="career-role">
+                            <h4>Seeking Internship</h4>
+                            <h5>Open to opportunities</h5>
+                        </div>
+                        <h3>NOW</h3>
+                    </div>
+                    <p>Looking for a software or mobile development internship where I can apply what I've built so
+                        far, learn from real industry experience, and contribute to meaningful projects.</p>
+                </div>
 
-    <script src="script.js"></script>
+                <div class="career-info-box">
+                    <div class="career-info-in">
+                        <div class="career-role">
+                            <h4>Clerk</h4>
+                            <h5>Sunshine Hampers &amp; Florist</h5>
+                        </div>
+                        <h3>2024</h3>
+                    </div>
+                    <p>Mar – Jun 2024. Assisted customers and handled inquiries. Promoted hampers via phone outreach.
+                        Managed calls and directed messages to relevant departments. Supported day-to-day operations.</p>
+                </div>
+
+                <div class="career-info-box">
+                    <div class="career-info-in">
+                        <div class="career-role">
+                            <h4>Tuition Teacher Assistant</h4>
+                            <h5>Pusat Bahasa Sri Amal Pelangi</h5>
+                        </div>
+                        <h3>2018</h3>
+                    </div>
+                    <p>Dec 2018 – Mar 2020. Prepared engaging PowerPoint teaching materials. Assisted in classroom
+                        activities. Developed supporting learning resources.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="career-section section-container" id="education">
+            <h2>My <br> education</h2>
+            <div class="career-info">
+                <div class="career-timeline" aria-hidden="true">
+                    <div class="career-dot"></div>
+                </div>
+
+                <div class="career-info-box">
+                    <div class="career-info-in">
+                        <div class="career-role">
+                            <h4>Diploma in Computer Science</h4>
+                            <h5>Tunku Abdul Rahman University of Management and Technology</h5>
+                        </div>
+                        <h3>NOW</h3>
+                    </div>
+                    <p>2024 – Present. Current CGPA: 3.80. Key subjects: OOP, Interface Design, Linux, Data
+                        Structures, Database Development, Mobile App Development, AI Introduction.</p>
+                </div>
+
+                <div class="career-info-box">
+                    <div class="career-info-in">
+                        <div class="career-role">
+                            <h4>SPM</h4>
+                            <h5>SMK Taman Pelangi Indah</h5>
+                        </div>
+                        <h3>2019</h3>
+                    </div>
+                    <p>2019 – 2024. Result: 1A 3B+ 2B 1C+ 2C.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work: pinned horizontal scroll (js/scroll-anim.js) -->
+        <section id="work" class="work">
+            <div class="work-container section-container">
+                <h2>My <span>Work</span></h2>
+                <div class="work-flex">
+                    <article class="work-box">
+                        <div class="work-info">
+                            <div class="work-title">
+                                <h3>01</h3>
+                                <div>
+                                    <h4>Travel Package Booking App</h4>
+                                    <p>Mobile · Kotlin</p>
+                                </div>
+                            </div>
+                            <h4>Tools and features</h4>
+                            <p>Kotlin, Firebase, MVVM, real-time updates, package browsing &amp; booking</p>
+                        </div>
+                        <div class="work-image">
+                            <a class="work-image-in" href="https://github.com/nestchao/Odyssey_Travel_Package_Booking_App"
+                                target="_blank" rel="noopener" data-cursor="disable" aria-label="Travel Package Booking App on GitHub">
+                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
+                                <img src="images/project3.png" alt="Travel Package Booking App" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work-box">
+                        <div class="work-info">
+                            <div class="work-title">
+                                <h3>02</h3>
+                                <div>
+                                    <h4>Malaysia Airlines Data Analysis</h4>
+                                    <p>Algorithms · Java</p>
+                                </div>
+                            </div>
+                            <h4>Tools and features</h4>
+                            <p>Java, graph data structures, breadth-first search, route analysis</p>
+                        </div>
+                        <div class="work-image">
+                            <a class="work-image-in" href="https://github.com/nestchao/Pilots.git" target="_blank"
+                                rel="noopener" data-cursor="disable" aria-label="Malaysia Airlines Data Analysis on GitHub">
+                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
+                                <img src="images/project5.png" alt="Malaysia Airlines Data Analysis System" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work-box">
+                        <div class="work-info">
+                            <div class="work-title">
+                                <h3>03</h3>
+                                <div>
+                                    <h4>Online Shopping System</h4>
+                                    <p>OOP · Java</p>
+                                </div>
+                            </div>
+                            <h4>Tools and features</h4>
+                            <p>Java, OOP design, product add/edit/delete/search</p>
+                        </div>
+                        <div class="work-image">
+                            <a class="work-image-in" href="https://github.com/boon-boon/Online-Shopping-System.git"
+                                target="_blank" rel="noopener" data-cursor="disable" aria-label="Online Shopping System on GitHub">
+                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
+                                <img src="images/project2.png" alt="Online Shopping System" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work-box">
+                        <div class="work-info">
+                            <div class="work-title">
+                                <h3>04</h3>
+                                <div>
+                                    <h4>Cloth Ordering System</h4>
+                                    <p>Console App · C++</p>
+                                </div>
+                            </div>
+                            <h4>Tools and features</h4>
+                            <p>C++, structured programming, order add/edit/delete/search</p>
+                        </div>
+                        <div class="work-image">
+                            <a class="work-image-in" href="https://github.com/boon-boon/CNM-COMPANY.git" target="_blank"
+                                rel="noopener" data-cursor="disable" aria-label="Cloth Ordering System on GitHub">
+                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
+                                <img src="images/project1.png" alt="Cloth Ordering System" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="work-box">
+                        <div class="work-info">
+                            <div class="work-title">
+                                <h3>05</h3>
+                                <div>
+                                    <h4>Reminder App</h4>
+                                    <p>CLI · Python</p>
+                                </div>
+                            </div>
+                            <h4>Tools and features</h4>
+                            <p>Python, CLI, create/edit/delete reminders</p>
+                        </div>
+                        <div class="work-image">
+                            <a class="work-image-in" href="https://github.com/boon-boon/SOFTWARE-DEVELOPMENT-ASSIGNMENT.git"
+                                target="_blank" rel="noopener" data-cursor="disable" aria-label="Reminder App on GitHub">
+                                <span class="work-link" aria-hidden="true"><i class="fas fa-arrow-up-right-from-square"></i></span>
+                                <img src="images/project4.png" alt="Reminder App" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                    </article>
+
+                    <div class="work-box work-box-cta">
+                        <div class="see-all-works">
+                            <h3>Want to see more?</h3>
+                            <p>Explore all of my projects and experiments on GitHub.</p>
+                            <a href="https://github.com/boon-boon" target="_blank" rel="noopener" class="see-all-btn" data-cursor="disable">
+                                See All Works →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills: the 3D globe -->
+        <section class="techstack" id="skills">
+            <h2>Tech Stack</h2>
+            <p class="techstack-lead">Drag the globe to spin it.</p>
+            <div class="globe-wrap" id="skills-globe" aria-label="Tech stack">
+                <ul class="globe-list">
+                    <li class="globe-item"><i class="devicon-java-plain colored" aria-hidden="true"></i><span>Java</span></li>
+                    <li class="globe-item"><i class="devicon-cplusplus-plain colored" aria-hidden="true"></i><span>C++</span></li>
+                    <li class="globe-item"><i class="devicon-python-plain colored" aria-hidden="true"></i><span>Python</span></li>
+                    <li class="globe-item"><i class="devicon-kotlin-plain colored" aria-hidden="true"></i><span>Kotlin</span></li>
+                    <li class="globe-item"><i class="devicon-mysql-plain colored" aria-hidden="true"></i><span>MySQL</span></li>
+                    <li class="globe-item"><i class="devicon-linux-plain" aria-hidden="true"></i><span>Linux</span></li>
+                    <li class="globe-item"><i class="devicon-github-original" aria-hidden="true"></i><span>GitHub</span></li>
+                    <li class="globe-item"><i class="devicon-firebase-plain colored" aria-hidden="true"></i><span>Firebase</span></li>
+                    <li class="globe-item"><i class="devicon-vscode-plain colored" aria-hidden="true"></i><span>VS Code</span></li>
+                    <li class="globe-item"><i class="devicon-visualstudio-plain colored" aria-hidden="true"></i><span>Visual Studio</span></li>
+                    <li class="globe-item"><i class="devicon-androidstudio-plain colored" aria-hidden="true"></i><span>Android Studio</span></li>
+                    <li class="globe-item"><i class="devicon-figma-plain colored" aria-hidden="true"></i><span>Figma</span></li>
+                    <li class="globe-item"><i class="fas fa-robot" aria-hidden="true"></i><span>ChatGPT</span></li>
+                    <li class="globe-item"><i class="devicon-google-plain colored" aria-hidden="true"></i><span>Antigravity</span></li>
+                </ul>
+            </div>
+            <div class="chips">
+                <span class="chip">Debugging</span>
+                <span class="chip">Problem Solving</span>
+                <span class="chip">Teamwork</span>
+                <span class="chip">Adaptability</span>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section class="achievements-section section-container" id="achievements">
+            <h2>Achievements <span>&amp;</span><br> certifications</h2>
+            <div class="achievements-grid">
+                <div class="achievement tilt">
+                    <div class="card-inner">
+                        <span class="achievement-num">01</span>
+                        <h3>NSSPC 2023</h3>
+                        <p>Competitor in the National Secondary School Programming Contest.</p>
+                    </div>
+                </div>
+                <div class="achievement tilt">
+                    <div class="card-inner">
+                        <span class="achievement-num">02</span>
+                        <h3>CCNA: Introduction to Networks</h3>
+                        <p>Cisco Networking Academy certification.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to action -->
+        <section class="cta-section" aria-label="Get in touch">
+            <div class="cta-buttons">
+                <a href="resume/Lee_Boon_Yew_Resume.pdf" target="_blank" rel="noopener" class="cta-btn cta-btn-play" data-cursor="disable">View Resume →</a>
+                <a href="mailto:leeboonyew06@gmail.com" class="cta-btn cta-btn-hire" data-cursor="disable">Hire Me →</a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section section-container" id="contact">
+            <div class="contact-container">
+                <h3>Lee Boon Yew</h3>
+                <div class="contact-flex">
+                    <div class="contact-box">
+                        <h4>Email</h4>
+                        <p><a href="mailto:leeboonyew06@gmail.com" data-cursor="disable">leeboonyew06@gmail.com</a></p>
+                        <h4>Location</h4>
+                        <p><span>Malaysia</span></p>
+                    </div>
+                    <div class="contact-box">
+                        <h4>Social</h4>
+                        <a href="https://github.com/boon-boon" target="_blank" rel="noopener" data-cursor="disable" class="contact-social">Github <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/boon-yew-lee-47228836b/" target="_blank" rel="noopener" data-cursor="disable" class="contact-social">Linkedin <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/60107659969" target="_blank" rel="noopener" data-cursor="disable" class="contact-social">WhatsApp <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+                        <a href="resume/Lee_Boon_Yew_Resume.pdf" download="Lee_Boon_Yew_Resume.pdf" data-cursor="disable" class="contact-social">Resume <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="contact-box">
+                        <h2>Designed and Developed <br> by <span>Lee Boon Yew</span></h2>
+                        <h5><i class="far fa-copyright" aria-hidden="true"></i> <span id="year"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/scroll-anim.js"></script>
+    <script src="js/skills-globe.js"></script>
+    <script src="js/tilt.js"></script>
+    <script src="js/fun.js"></script>
+    <script type="module" src="js/character.js"></script>
 </body>
 
 </html>

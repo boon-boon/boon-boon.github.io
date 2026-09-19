@@ -1,157 +1,70 @@
-# Portfolio Generator 🌟
+# Lee Boon Yew — Portfolio
 
-A beautiful, modern portfolio generator that creates stunning portfolio websites in minutes. Users fill in their information through an intuitive form, and the app automatically generates a professional portfolio with GitHub integration.
+Personal portfolio site for Lee Boon Yew, a Computer Science student at TAR UMT.
+Static HTML/CSS/JS, no build step, deployed on GitHub Pages.
 
-## ✨ Features
+The layout, palette and scroll choreography follow Redoyanul Haque's
+[portfolio-website](https://github.com/red1-for-hek/portfolio-website) (MIT, see
+`THIRD_PARTY_NOTICES.md`), rebuilt without React and with an original 3D character.
 
-- **Multi-Step Form Builder** - Easy-to-use form to collect personal info, skills, experience, and education
-- **GitHub Integration** - Automatically fetches and displays your latest projects from GitHub
-- **Dark Theme Design** - Stunning dark theme with purple/pink gradients and starry background
-- **Live Preview** - See your portfolio update in real-time
-- **Responsive Design** - Works perfectly on desktop, tablet, and mobile devices
-- **Export Functionality** - Download your portfolio as a standalone HTML file
-- **Smooth Animations** - Professional animations and transitions throughout
-- **Data Persistence** - Your data is saved locally as you fill in the form
+## Sections
 
-## 🚀 Getting Started
+- **Landing** — name and rolling role titles (Software Engineer ⇄ Mobile App Developer), with a
+  3D developer typing at a desk (`models/character.glb`, built from Quaternius' CC0 "Hoodie
+  Character"). The head follows the pointer and the fingers type; on scroll he turns, the monitor
+  rises and lights up, and he floats away after WHAT I DO. Phones/tablets show a photo instead.
+- **About** — word-by-word reveal on scroll.
+- **What I Do** — the dashed panel with two expanding boxes (Mobile Apps / Software).
+- **Career & Education** — *role + year | description* rows with the glowing timeline that grows
+  as you scroll (GSAP ScrollTrigger, scrubbed).
+- **My Work** — pinned section that scrolls horizontally through numbered project boxes.
+- **Tech Stack** — the draggable, auto-spinning 3D icon globe (pure CSS 3D).
+- **Achievements**, call-to-action buttons and the **Contact** footer.
 
-### Prerequisites
+Smooth scrolling is Lenis; the custom cursor, rolling nav links and social-icon magnet follow the reference.
+`prefers-reduced-motion` disables the animations, the cursor and the 3D character.
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- A local web server (optional but recommended)
+## Structure
 
-### Installation
+```
+.
+├── index.html            # Page markup
+├── styles.css            # All styles (tokens at the top)
+├── js/
+│   ├── site.js           # Lenis, cursor, text reveals, landing loop, What I Do, contact reveal
+│   ├── scroll-anim.js    # GSAP: pinned Work scroll + career timelines
+│   ├── character.js      # Loads models/character.glb + scroll choreography (ES module, desktop only)
+│   ├── skills-globe.js   # CSS-3D icon sphere
+│   ├── tilt.js           # 3D tilt for .tilt elements (achievements)
+│   └── fun.js            # Confetti on the logo
+├── models/character.glb  # The 3D character scene (CC0 base, ~1 MB)
+├── images/               # Profile photo and project screenshots
+└── resume/               # Resume PDF
+```
 
-1. Clone or download this repository
-2. Navigate to the project directory
-3. Open `index.html` in your browser or serve it with a local web server
+## Running locally
 
-**Using Python (recommended):**
+The character is an ES module with an import map, so the site must be served over HTTP:
+
 ```bash
-# Python 3
 python -m http.server 8000
-
-# Then open http://localhost:8000 in your browser
 ```
 
-**Using Node.js:**
-```bash
-# If you have Node.js installed
-npx http-server
+Then open <http://localhost:8000>.
 
-# Then open http://localhost:8080 in your browser
-```
+## Customising
 
-## 📖 How to Use
+- **Colours** are the `--accentColor` / `--backgroundColor` tokens at the top of `styles.css`.
+- **Role titles** are the four `.landing-h2-*` divs in the landing markup.
+- **What I Do** boxes, career rows and projects are plain markup in `index.html`.
+- **Skills** are the `<li class="globe-item">` entries; the globe re-layouts automatically.
+- **Character** — replace `models/character.glb` with any rigged GLB that has `Neck`, `Head` and
+  `Chest` bones and a `Monitor` group containing a `Screen` mesh; `js/character.js` animates those by name.
 
-1. **Fill in the Form**
-   - Open `index.html` in your browser
-   - Complete the multi-step form with your information:
-     - Personal details (name, title, bio)
-     - GitHub username (for automatic project fetching)
-     - Skills and technologies
-     - Work experience
-     - Education
-     - Contact information
+## Dependencies (CDN only)
 
-2. **Generate Portfolio**
-   - Click "Generate Portfolio" after completing the form
-   - Your data is saved automatically as you go
-
-3. **View & Download**
-   - Your portfolio will be displayed with all your information
-   - GitHub projects are automatically fetched and displayed
-   - Click "Download Portfolio" to save as an HTML file
-   - Edit your info anytime by going back to the form
-
-## 🎨 Customization
-
-### Colors
-Edit the CSS variables in `styles.css` to customize the color scheme:
-```css
-:root {
-  --color-accent-primary: #a855f7;  /* Purple */
-  --color-accent-secondary: #ec4899; /* Pink */
-  /* Add your own colors here */
-}
-```
-
-### Fonts
-The app uses Google Fonts (Space Grotesk and JetBrains Mono). Change them in `styles.css`:
-```css
-@import url('your-font-url-here');
-```
-
-## 📁 Project Structure
-
-```
-portfolio-generator/
-├── index.html          # Form builder page
-├── portfolio.html      # Portfolio display page
-├── styles.css          # Complete design system and styles
-├── app.js             # Form logic and data management
-├── portfolio.js       # Portfolio rendering and GitHub integration
-└── README.md          # This file
-```
-
-## 🔧 Technologies Used
-
-- **HTML5** - Structure and semantics
-- **CSS3** - Styling, animations, and responsive design
-- **Vanilla JavaScript** - All logic and interactions
-- **GitHub API** - Fetching repository data
-- **localStorage** - Client-side data persistence
-
-## 🌐 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 📝 Features in Detail
-
-### GitHub Integration
-The app automatically fetches your public repositories from GitHub and displays:
-- Repository name and description
-- Programming language
-- Star count
-- Direct links to each project
-
-### Data Persistence
-Your form data is automatically saved to browser localStorage:
-- Resume progress at any time
-- Data persists across sessions
-- No server or database needed
-
-### Export Options
-Download your complete portfolio as a single HTML file:
-- All styles and scripts inline
-- Ready to host anywhere
-- No dependencies needed
-
-## 🎯 Perfect For
-
-- Job seekers looking for internships or full-time positions
-- Freelancers needing a quick portfolio
-- Students showcasing their projects
-- Developers wanting a clean, professional online presence
-
-## 🤝 Contributing
-
-Feel free to fork this project and customize it for your needs!
-
-## 📄 License
-
-This project is open source and available for anyone to use and modify.
-
-## 🙏 Acknowledgments
-
-- Inspired by modern portfolio designs
-- Uses the GitHub API for project fetching
-- Built with love and lots of purple gradients 💜
-
----
-
-**Ready to create your stunning portfolio?** Open `index.html` and get started! 🚀
-#
+- [GSAP](https://gsap.com/) 3.13 + ScrollTrigger
+- [Lenis](https://lenis.darkroom.engineering/) 1.3
+- [three.js](https://threejs.org/) 0.169
+- [canvas-confetti](https://github.com/catdad/canvas-confetti) 1.9.3 (loaded lazily)
+- Font Awesome 6, Devicon, Google Fonts (Geist)
